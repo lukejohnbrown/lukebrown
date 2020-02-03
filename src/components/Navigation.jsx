@@ -1,12 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "gatsby";
 import styled from "styled-components";
 
 import theme from "../theme";
-
-const NavigationWrapper = styled.nav`
-
-`;
 
 const NavigationList = styled.ul`
   list-style: none;
@@ -14,19 +10,18 @@ const NavigationList = styled.ul`
 `;
 
 const NavigationItem = styled.li`
+  opacity: ${({ isUnfocused }) => isUnfocused ? "0.4" : "1"};
+
   &:not(:last-child) {
-    margin-right: ${theme.space[6]};
+    padding-right: ${theme.space[6]};
     @media ${theme.breakpoints.up.sm} {
-      margin-right: ${theme.space[7]};
+      padding-right: ${theme.space[7]};
     }
   }
 `;
 
 const NavigationLink = styled(Link)`
   text-decoration: none;
-  font-weight: ${theme.fontWeight[1]};
-  opacity: 0.5;
-  transition: all 200ms;
 
   &:hover,
   &:focus {
@@ -35,20 +30,21 @@ const NavigationLink = styled(Link)`
 `;
 
 const Navigation = () => {
+  const [hoveredLink, setHoveredLink] = useState();
+  const renderMenuItem = ({ uri, title }) => (
+    <NavigationItem onMouseOver={() => setHoveredLink(uri)}  onMouseLeave={() => setHoveredLink(null)} isUnfocused={hoveredLink && hoveredLink !== uri}>
+      <NavigationLink to={`/${uri}`}>{title}</NavigationLink>
+    </NavigationItem>
+  );
+
   return (
-    <NavigationWrapper>
+    <>
       <NavigationList>
-        <NavigationItem>
-          <NavigationLink>Work</NavigationLink>
-        </NavigationItem>
-        <NavigationItem>
-          <NavigationLink>Contact</NavigationLink>
-        </NavigationItem>
-        <NavigationItem>
-          <NavigationLink>Writing</NavigationLink>
-        </NavigationItem>
+        {renderMenuItem({ uri: "work", title: "Work"})}
+        {renderMenuItem({ uri: "contact", title: "Contact"})}
+        {renderMenuItem({ uri: "writing", title: "Writing"})}
       </NavigationList>
-    </NavigationWrapper>
+    </>
   )
 }
 
