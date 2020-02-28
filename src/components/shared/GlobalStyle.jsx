@@ -1,9 +1,10 @@
 import {
   createGlobalStyle
 } from "styled-components";
-import theme from "../theme";
 
-const GlobalStyle = createGlobalStyle `
+import theme from "../../theme";
+
+const GlobalStyle = createGlobalStyle`
   html,
   body,
   div,
@@ -94,6 +95,10 @@ const GlobalStyle = createGlobalStyle `
     vertical-align: baseline;
   }
 
+  strong {
+    font-weight: ${theme.fontWeight[2]};
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -103,19 +108,32 @@ const GlobalStyle = createGlobalStyle `
     color: ${theme.palette.black};
 
     @media ${theme.breakpoints.up.sm} {
-      font-size: 16px;
+      font-size:15px;
     }
   }
 
   h1, h2, h3, h4, h5, h6, p, a, button {
     font-size: 1rem;
     color: ${theme.palette.black};
+    letter-spacing: -0.01em;
+    line-height: 1.6;
   }
 
   button {
+    font-size: 1rem;
     border: none;
     background: none;
     font-family: 'Heebo', 'Helvetica', sans-serif;
+  }
+
+  @keyframes wave {
+   0% { transform: rotate(  0.0deg) }
+   10% { transform: rotate(10.0deg) }
+   20% { transform: rotate( -12.0deg) }
+   30% { transform: rotate(10.0deg) }
+   40% { transform: rotate(  -9.0deg) }
+   50% { transform: rotate(  0.0deg) }
+    100% { transform: rotate(  0.0deg) }
   }
 `
 

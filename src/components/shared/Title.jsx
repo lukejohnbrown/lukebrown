@@ -1,0 +1,25 @@
+import React from 'react'
+import styled from "styled-components";
+
+const TitleWrapper = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize[600]};
+  font-weight: ${({ theme }) => theme.fontWeight[2]};
+  margin: ${({ theme }) => theme.space[6]} 0 ${({ theme }) => theme.space[3]} 0;
+  display: flex;
+  align-items: flex-start;
+
+  @media ${({ theme }) => theme.breakpoints.up.md} {
+    margin: ${({ theme }) => theme.space[7]} 0 ${({ theme }) => theme.space[2]} 0;
+  };
+`;
+
+
+const Title = ({ children }) => {
+  return (
+    <TitleWrapper>
+      {children}
+    </TitleWrapper>
+  )
+}
+
+export default Title;

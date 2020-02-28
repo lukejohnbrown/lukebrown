@@ -32,7 +32,7 @@ module.exports = {
       options: {
         fonts: [{
           family: `Hind`,
-          variants: [`400`, `500`, `800`],
+          variants: [`400`, `500`, `600`, `800`],
         }, ],
       },
     },

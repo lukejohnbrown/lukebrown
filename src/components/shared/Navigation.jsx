@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-import theme from "../theme";
+import theme from "../../theme";
 
 const NavigationList = styled.ul`
   list-style: none;
@@ -11,9 +11,11 @@ const NavigationList = styled.ul`
 
 const NavigationItem = styled.li`
   opacity: ${({ isUnfocused }) => isUnfocused ? "0.4" : "1"};
+  font-weight: ${theme.fontWeight[1]};
 
   &:not(:last-child) {
     padding-right: ${theme.space[6]};
+
     @media ${theme.breakpoints.up.sm} {
       padding-right: ${theme.space[7]};
     }

@@ -1,20 +1,23 @@
 
 const palette = {
   black: "#2F2F2F",
+  grey: "#F5F5F5",
   yellow: "#F5DE19",
   blue: "#3D348B",
 }
 
-const sizes = ["400px", "500px"];
+const sizes = ["400px", "500px", "920px"];
 
 const breakpoints = {
   up: {
     xs: `(min-width: ${sizes[0]})`,
     sm: `(min-width: ${sizes[1]})`,
+    md: `(min-width: ${sizes[2]})`,
   },
   down: {
     xs: `(max-width: ${sizes[0]})`,
     sm: `(max-width: ${sizes[1]})`,
+    md: `(max-width: ${sizes[2]})`,
   }
 }
 
@@ -30,12 +33,13 @@ const fontSize = {
   [300]: '1.2rem',
   [400]: '1.5rem',
   [500]: '1.8rem',
-  [600]: '2.4rem',
-  [700]: '3rem',
-  [800]: '3.6rem',
+  [600]: '2rem',
+  [700]: '2.4rem',
+  [800]: '3rem',
+  [900]: '3.6rem',
 }
 
-const fontWeight = ["400", "500", "800"];
+const fontWeight = ["400", "500", "600", "800"];
 
 const theme = {
   palette,
