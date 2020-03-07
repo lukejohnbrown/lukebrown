@@ -1,10 +1,18 @@
 
-const palette = {
+const palette = (darkMode) => ({
+  bodyBackground: darkMode ? "#202020" : "#FCFCFC",
+  text: darkMode ? "#E9E9E9" : "#2F2F2F",
+  contrastText: darkMode ? "#2F2F2F" : "#E9E9E9",
+  panelBackground: darkMode ? "#262626" : "#F5F5F5",
+  panelBorder: darkMode ? "#2d2d2d" : "#ececec",
+  iconColor: darkMode ? "#F5DE19" : "#3D348B",
   black: "#2F2F2F",
   grey: "#F5F5F5",
+  mediumGrey: "#ececec",
+  darkGrey: "#7C7C7C",
   yellow: "#F5DE19",
   blue: "#3D348B",
-}
+})
 
 const sizes = ["400px", "500px", "920px"];
 
@@ -41,12 +49,12 @@ const fontSize = {
 
 const fontWeight = ["400", "500", "600", "800"];
 
-const theme = {
-  palette,
+const theme = (darkMode) => ({
+  palette: palette(darkMode),
   breakpoints,
   space,
   fontWeight,
   fontSize
-}
+});
 
 export default theme;

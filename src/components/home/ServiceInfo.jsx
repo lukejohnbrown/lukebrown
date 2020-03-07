@@ -2,9 +2,10 @@ import React from 'react'
 import styled from "styled-components";
 
 const ServiceInfoWrapper = styled.div`
-  background: ${({ theme }) => theme.palette.grey};
+  background: ${({ theme }) => theme.palette.panelBackground};
   padding: ${({ theme }) => theme.space[4]};
   margin: 0 -${({ theme }) => theme.space[4]};
+  border: 2px solid ${({ theme }) => theme.palette.panelBorder};
 
   @media(min-width: 360px) {
     padding: ${({ theme }) => theme.space[4]} ${({ theme }) => theme.space[5]};

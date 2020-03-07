@@ -96,25 +96,28 @@ const GlobalStyle = createGlobalStyle`
   }
 
   strong {
-    font-weight: ${theme.fontWeight[2]};
+    font-weight: ${({ theme }) => theme.fontWeight[2]};;
   }
 
   * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html, body {
     font-size: 14px;
-    color: ${theme.palette.black};
+    color: ${({ theme }) => theme.palette.text};;
+    background: ${({ theme }) => theme.palette.bodyBackground};
 
-    @media ${theme.breakpoints.up.sm} {
+    @media ${({ theme }) => theme.breakpoints.up.sm} {
       font-size:15px;
     }
   }
 
   h1, h2, h3, h4, h5, h6, p, a, button {
     font-size: 1rem;
-    color: ${theme.palette.black};
+    color: ${({ theme }) => theme.palette.text};;
     letter-spacing: -0.01em;
     line-height: 1.6;
   }

@@ -2,19 +2,22 @@ import React from 'react'
 import styled from "styled-components";
 
 const HandIconWrapper = styled.svg`
-  width: 35px;
-  height: 35px;
-  margin-left: ${({ theme }) => theme.space[2]};
-  transform: translateY(3px);
+  width: 37px;
+  height: 37px;
+  margin: -3px 0 0 ${({ theme }) => theme.space[3]};
   animation-name: wave;
   animation-duration: 2.5s;
   animation-iteration-count: 1;
-  transform-origin: 60% 60%;
+  transform-origin: 60% 30%;
+
+  path {
+    fill: ${({ theme }) => theme.palette.text};;
+  }
 
   @media ${({ theme }) => theme.breakpoints.up.md} {
-    width: 37px;
-    height: 37px;
-    transform: translateY(0px);
+    margin-top: -6px;
+    width: 40px;
+    height: 40px;
     margin-left: ${({ theme }) => theme.space[3]};
   }
 `

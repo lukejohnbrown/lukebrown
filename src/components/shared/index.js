@@ -7,3 +7,4 @@ export { default as Navigation } from "./Navigation";
 export { default as Title } from "./Title";
 export { default as DesignIcon } from "./DesignIcon";
 export { default as DevelopIcon } from "./DevelopIcon";
+export { default as Footer } from "./Footer";

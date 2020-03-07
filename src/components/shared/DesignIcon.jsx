@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
 
-const DesignIconWrapper = styled.svg `
+const DesignIconWrapper = styled.svg`
+  path {
+    fill: ${({ theme }) => theme.palette.iconColor};
+  }
+
   @media ${({ theme }) => theme.breakpoints.up.md} {
     width: 37px;
     height: 37px;

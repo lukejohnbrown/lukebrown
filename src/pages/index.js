@@ -7,7 +7,8 @@ import {
   Seo,
   Title,
   DesignIcon,
-  DevelopIcon
+  DevelopIcon,
+  Footer
 } from "../components/shared"
 import {
   HandIcon,
@@ -67,6 +68,8 @@ const IndexPage = () => (
         <ServiceInfo title="Website Development" icon={<DevelopIcon />}>
           I love to work with business owners and individuals to create bespoke designs that suits their brand perfectly. I believe that there is more to a professional looking website than it simply “looking pretty”. Designing for the web requires consideration for every user that visits your site, which is why we always approach design by prioritising user experience and accessibility.
         </ServiceInfo>
+
+        <Footer buttonText="Want to see some of my work?" buttonLink="/work" />
       </Services>
     </Container>
   </Layout>
