@@ -115,11 +115,17 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  h1, h2, h3, h4, h5, h6, p, a, button {
+  h1, h2, h3, h4, h5, h6, p, button {
     font-size: 1rem;
     color: ${({ theme }) => theme.palette.text};;
     letter-spacing: -0.01em;
     line-height: 1.6;
+  }
+
+  a {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.palette.text};;
+    letter-spacing: -0.01em;
   }
 
   button {

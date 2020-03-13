@@ -28,7 +28,7 @@ const Services = styled.div`
   margin-top: ${({ theme }) => theme.space[6]};
   h4 {
     font-size: ${({ theme }) => theme.fontSize[200]};
-    font-weight: ${({ theme }) => theme.fontWeight[1]};
+    font-weight: ${({ theme }) => theme.fontWeight[2]};
     margin-bottom: ${({ theme }) => theme.space[3]};
   }
 `;
@@ -66,7 +66,7 @@ const IndexPage = () => (
         </ServiceWrapper>
 
         <ServiceInfo title="Website Development" icon={<DevelopIcon />}>
-          I love to work with business owners and individuals to create bespoke designs that suits their brand perfectly. I believe that there is more to a professional looking website than it simply “looking pretty”. Designing for the web requires consideration for every user that visits your site, which is why we always approach design by prioritising user experience and accessibility.
+          I take a huge amount of pride in building high quality online experiences that yout customers enjoy using and you enjoy managing.There is a lot of potential to succeed online, but if you start off on the wrong foot it can quickly become an uphill battle.This is exactly why I work closely with businesses and individuals to ensure that we take the right techincal approach from day one.
         </ServiceInfo>
 
         <Footer buttonText="Want to see some of my work?" buttonLink="/work" />
