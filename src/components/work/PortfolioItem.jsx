@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-import { DesignIcon, WordpressIcon } from "../shared";
+import { DesignIcon, WordpressIcon, SPAIcon } from "../shared";
 
 const PortfolioItemWrapper = styled.div`
   h3 {
@@ -39,6 +39,7 @@ const PortfolioImageWrapper = styled.div`
   a,
   span {
     background: ${({ theme }) => theme.palette.yellow};
+    color: ${({ theme }) => theme.palette.black};
     display: flex;
     align-items: center;
     position: absolute;
@@ -61,7 +62,7 @@ const PortfolioImageWrapper = styled.div`
   a {
     &:hover,
     &:focus {
-      background: ${({ theme }) => theme.palette.black};;
+      background: ${({ theme }) => theme.palette.black};
       color: white;
       svg {
         path {
@@ -111,12 +112,16 @@ const FEATURE_ASSETS = {
   "WORDPRESS": {
     icon: <WordpressIcon width="22" height="21" isSmall />,
     title: "Wordpress CMS"
+  },
+  "SPA": {
+    icon: <SPAIcon />,
+    title: "React App"
   }
 }
 
 const PortfolioItem = ({ image, title, subtitle, features, description, url }) => {
   return (
-    <PortfolioItemWrapper>
+    <PortfolioItemWrapper id="portfolio-item">
       <PortfolioImageWrapper url={url}>
         <PortfolioImage src={image} alt={`${subtitle}`} />
         {url ? (
