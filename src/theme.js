@@ -5,6 +5,7 @@ const palette = (darkMode) => ({
   contrastText: darkMode ? "#2F2F2F" : "#E9E9E9",
   panelBackground: darkMode ? "#262626" : "#F5F5F5",
   panelBorder: darkMode ? "#2d2d2d" : "#ececec",
+  inputBorder: darkMode ? "#666666" : "#E9E9E9",
   iconColor: darkMode ? "#F5DE19" : "#3D348B",
   black: "#2F2F2F",
   grey: "#F5F5F5",

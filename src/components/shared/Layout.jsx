@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme(false)}>
       <GlobalStyle />
       <Helmet
-        title="Box Shadows"
+        title="Luke Brown"
         meta={[
           {
             name: "description",
@@ -38,15 +38,22 @@ const Layout = ({ children }) => {
       />
 
       <LayoutWrapper>
-        <Header />
-        <Transition
-          config={{ duration: 300, delay: 200 }}
-          from={{ opacity: 0, transform: "translateY(-20px)" }}
-          enter={{ opacity: 1, transform: "translateY(0)" }}
-          leave={{ opacity: 0, transform: "translateY(-20px)" }}
-        >
-        {() => style => <main style={style}>{children}</main>}
-      </Transition>
+          <Transition
+            config={{ duration: 300, delay: 100 }}
+            from={{ opacity: 0, transform: "translateY(-20px)" }}
+            enter={{ opacity: 1, transform: "translateY(0)" }}
+            leave={{ opacity: 0, transform: "translateY(-20px)" }}
+          >
+            {() => style => <div style={style}><Header /></div>}
+          </Transition>
+          <Transition
+            config={{ duration: 300, delay: 200 }}
+            from={{ opacity: 0, transform: "translateY(-20px)" }}
+            enter={{ opacity: 1, transform: "translateY(0)" }}
+            leave={{ opacity: 0, transform: "translateY(-20px)" }}
+          >
+          {() => style => <main style={style}>{children}</main>}
+        </Transition>
       </LayoutWrapper>
     </ThemeProvider>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from "gatsby";
 import styled from 'styled-components';
+
+import Button from "./Button";
 
 const FooterWrapper = styled.footer`
   display: flex;
@@ -9,29 +10,16 @@ const FooterWrapper = styled.footer`
   margin-top: ${({ theme }) => theme.space[7]};
 `;
 
-const FooterButton = styled(Link)`
-  display: block;
-  text-decoration: none;
-  border: 2px solid ${({ theme }) => theme.palette.text};;
-  color: ${({ theme }) => theme.palette.text};
-  font-weight: ${({ theme }) => theme.fontWeight[1]};
-  padding: ${({ theme }) => theme.space[1]} ${({ theme }) => theme.space[2]};
-  transition: all 200ms;
+const ButtonWrapper = styled.div`
+  margin-bottom: ${({ theme }) => theme.space[5]};
 
-  &:hover,
-  &:focus {
-    background: ${({ theme }) => theme.palette.text};
-    color: ${({ theme }) => theme.palette.contrastText};;
+  @media ${({ theme }) => theme.breakpoints.up.md} {
+    margin-bottom: ${({ theme }) => theme.space[6]};
   }
 `;
 
 const FooterLinks = styled.div`
   display: flex;
-  margin-top: ${({ theme }) => theme.space[5]};
-
-  @media ${({ theme }) => theme.breakpoints.up.md} {
-    margin-top: ${({ theme }) => theme.space[6]};
-  }
 
   a {
     font-weight: ${({ theme }) => theme.fontWeight[1]};
@@ -53,8 +41,10 @@ const FooterLinks = styled.div`
 const Footer = ({ buttonText, buttonLink }) => {
   return (
     <FooterWrapper>
-      {buttonText  && buttonLink && (
-        <FooterButton to={buttonLink}>{buttonText}</FooterButton>
+      {buttonText && buttonLink && (
+        <ButtonWrapper>
+          <Button isNavButton buttonLink={buttonLink} buttonText={buttonText} />
+        </ButtonWrapper>
       )}
       <FooterLinks>
         <a href="mailto:hello@lukebrown.io" target="_blank" rel="noreffer">hello@lukebrown.io</a>
@@ -64,4 +54,4 @@ const Footer = ({ buttonText, buttonLink }) => {
   )
 }
 
-export default Footer
+export default Footer;

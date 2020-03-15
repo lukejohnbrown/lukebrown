@@ -135,6 +135,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Heebo', 'Helvetica', sans-serif;
   }
 
+  input,
+  textarea {
+    font-family: 'Heebo', 'Helvetica', sans-serif;
+    font-size: 1rem;
+  }
+
   @keyframes wave {
    0% { transform: rotate(  0.0deg) }
    10% { transform: rotate(10.0deg) }
