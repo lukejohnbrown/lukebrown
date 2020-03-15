@@ -28,9 +28,9 @@ const PortolioItems = styled.section`
   }
 `;
 
-const WorkPage = () => {
+const WorkPage = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo title="Work" />
       <Container>
         <Title>Let’s take a look at some previous projects...</Title>

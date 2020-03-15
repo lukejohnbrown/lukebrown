@@ -37,8 +37,8 @@ const ServiceWrapper = styled.div `
   margin-bottom: ${({ theme }) => theme.space[4]};
 `;
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = ({ location }) => (
+  <Layout location={location}>
     <Seo title="Home" />
     <Container>
       <Title>
