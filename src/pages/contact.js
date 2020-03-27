@@ -58,7 +58,7 @@ const ContactPage = () => {
 
   useEffect(() => {
     const sendMail = async () => {
-      const res = await post('http://localhost:9000/mailer', {
+      const res = await post('/.netlify/functions/mailer', {
         name: "Luke",
         email: "hello@lukebrown.io",
         message: "yooo"
