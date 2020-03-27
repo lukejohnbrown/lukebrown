@@ -11,8 +11,8 @@ exports.handler = async ({ body }, context, callback) => {
     auth: {
       type: 'OAuth2',
       user: "admin@lukebrown.io",
-      serviceClient: GSUITE_CLIENT_ID,
-      privateKey: GSUITE_PRIVATE_KEY,
+      serviceClient: GSUITE_CLIENT_ID.replace(/\\n/gm, '\n'),
+      privateKey: GSUITE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
     },
   });
 
