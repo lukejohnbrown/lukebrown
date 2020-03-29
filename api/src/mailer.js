@@ -55,7 +55,7 @@ exports.handler = async ({ body }, context, callback) => {
     });
   } catch (err) {
     callback(null, {
-      statusCode: err.response.status,
+      statusCode: 500,
       body: "Network error"
     });
   }
