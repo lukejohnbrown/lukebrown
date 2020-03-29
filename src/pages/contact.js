@@ -53,16 +53,22 @@ const FormField = styled.div`
   }
 `;
 
+const ErrorMessage = styled.p`
+  margin-bottom: ${({ theme }) => theme.space[4]};
+  color: #c62828;
+  font-weight: ${({ theme }) => theme.fontWeight[1]};
+`;
+
+const INITIAL_FORM_VALUES = {
+  name: "",
+  emailAddress: "",
+  message: ""
+}
+
 const ContactPage = () => {
   const [hasFormError, setHasFormError] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formValues, setFormValues] = useState({
-    name: "",
-    emailAddress: "",
-    message: ""
-  });
-
-  console.log(formValues);
+  const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
 
   const handleInputChange = (e, input) => {
     const currentFormValues = formValues;
@@ -72,18 +78,26 @@ const ContactPage = () => {
     })
   }
 
+  const clearFormValues = () => {
+    setFormValues(INITIAL_FORM_VALUES)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setHasFormError(false);
     const res = await post('/.netlify/functions/mailer', {
-      name: "Luke",
-      email: "hello@lukebrown.io",
-      message: "yooo"
+      name: formValues.name,
+      email: formValues.emailAddress,
+      message: formValues.message
     });
+
+    console.log(res);
 
     if (res.status !== 200) {
       setHasFormError(true);
+    } else {
+      clearFormValues();
     }
 
     setIsSubmitting(false);
@@ -135,8 +149,8 @@ const ContactPage = () => {
             </label>
             <textarea required name="message" id="message" value={formValues.message} onChange={(e) => handleInputChange(e, "message")} />
           </FormField>
-          {hasFormError && (
-            <p>Whoops, something wen't wrong. Please try again...</p>
+          {hasFormError || true && (
+            <ErrorMessage>Whoops, something has gone wrong when sending your message. Please try again...</ErrorMessage>
           )}
           <Button isNavButton={false} buttonText={isSubmitting ? "Sending..." : "Send message"} type="submit" />
         </ContactForm>
