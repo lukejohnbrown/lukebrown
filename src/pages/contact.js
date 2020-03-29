@@ -54,21 +54,41 @@ const FormField = styled.div`
 `;
 
 const ContactPage = () => {
-  const [formError, setFormError] = useState();
+  const [hasFormError, setHasFormError] = useState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    emailAddress: "",
+    message: ""
+  });
 
-  useEffect(() => {
-    const sendMail = async () => {
-      const res = await post('/.netlify/functions/mailer', {
-        name: "Luke",
-        email: "hello@lukebrown.io",
-        message: "yooo"
-      });
+  console.log(formValues);
 
-      console.log(res);
+  const handleInputChange = (e, input) => {
+    const currentFormValues = formValues;
+    setFormValues({
+      ...currentFormValues,
+      [input]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setHasFormError(false);
+    const res = await post('/.netlify/functions/mailer', {
+      name: "Luke",
+      email: "hello@lukebrown.io",
+      message: "yooo"
+    });
+
+    if (res.status !== 200) {
+      setHasFormError(true);
     }
 
-    sendMail();
-  }, []);
+    setIsSubmitting(false);
+  }
+
 
   return (
     <Layout>
@@ -77,7 +97,8 @@ const ContactPage = () => {
         <Title>Want to discuss a project?</Title>
         <p>Want to discuss a project you have in mind? I would love to hear from you! It all starts with a commitment free chat over a cup of tea...</p>
 
-        <ContactForm method="POST">
+        <ContactForm method="POST" onSubmit={handleSubmit}>
+
           <FormField>
             <label htmlFor="name">
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +106,7 @@ const ContactPage = () => {
               </svg>
               Let's start with your name
             </label>
-            <input type="text" id="name" name="name" />
+            <input required type="text" id="name" name="name" onChange={(e) => handleInputChange(e, "name")} value={formValues.name} />
           </FormField>
 
           <FormField>
@@ -102,7 +123,7 @@ const ContactPage = () => {
               </svg>
               Followed by your email address
             </label>
-            <input type="email" id="email" email="email" />
+            <input required type="email" id="email" email="email" onChange={(e) => handleInputChange(e, "emailAddress")} value={formValues.emailAddress}/>
           </FormField>
 
           <FormField>
@@ -112,10 +133,12 @@ const ContactPage = () => {
             </svg>
               Great! How can I help?
             </label>
-            <textarea name="message" id="message"></textarea>
+            <textarea required name="message" id="message" value={formValues.message} onChange={(e) => handleInputChange(e, "message")} />
           </FormField>
-
-          <Button isNavButton={false} buttonText="Send message" type="submit" />
+          {hasFormError && (
+            <p>Whoops, something wen't wrong. Please try again...</p>
+          )}
+          <Button isNavButton={false} buttonText={isSubmitting ? "Sending..." : "Send message"} type="submit" />
         </ContactForm>
         <Footer />
       </Container>
