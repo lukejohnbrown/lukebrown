@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
+const sanitizer = require('sanitizer');
 
-const { GSUITE_CLIENT_ID, GSUITE_PRIVATE_KEY } = process.env;
+const { GSUITE_CLIENT_ID, GSUITE_PRIVATE_KEY, SLACK_HOOK_ENDPOINT } = process.env;
 
 exports.handler = async ({ body }, context, callback) => {
   const { name, email, message } = JSON.parse(body);
@@ -16,7 +17,7 @@ exports.handler = async ({ body }, context, callback) => {
     },
   });
 
-  if (!name || !email || !message) {
+  if (!GSUITE_CLIENT_ID || !GSUITE_PRIVATE_KEY || !SLACK_HOOK_ENDPOINT || !name || !email || !message) {
     callback(null, {
       statusCode: 500,
       body: "Missing data"
@@ -25,12 +26,19 @@ exports.handler = async ({ body }, context, callback) => {
   }
 
   try {
+    // send via slack
+    await post(SLACK_HOOK_ENDPOINT,
+    {
+      text: `------------------ \n\nName: ${sanitizer.sanitize(name)}\n\nEmail: ${sanitizer.sanitize(email)}\n\nMessage: ${sanitizer.sanitize(message)}`,
+    });
+
+    // send via email
     await transporter.verify();
     await transporter.sendMail({
       from: "admin@lukebrown.io",
       to: "hello@lukebrown.io",
-      subject: 'New email',
-      text: `${email} ${name} ${message}`,
+      subject: 'New contact form entry from lukebrown.io',
+      text: `${sanitizer.sanitize(name)}(${sanitizer.sanitize(email)}) ${sanitizer.sanitize(message)}`,
     }, (error, info) => {
       if (error) {
         callback(null, {

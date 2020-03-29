@@ -53,9 +53,9 @@ const FormField = styled.div`
   }
 `;
 
-const ErrorMessage = styled.p`
+const StatusMessage = styled.p`
   margin-bottom: ${({ theme }) => theme.space[4]};
-  color: #c62828;
+  color: ${({ type, theme }) => type === FORM_STATUS.ERROR ? theme.palette.error : theme.palette.success};
   font-weight: ${({ theme }) => theme.fontWeight[1]};
 `;
 
@@ -65,12 +65,21 @@ const INITIAL_FORM_VALUES = {
   message: ""
 }
 
+const FORM_STATUS = {
+  ERROR: "ERROR",
+  SUCCESS: "SUCCESS"
+}
+
 const ContactPage = () => {
-  const [hasFormError, setHasFormError] = useState();
+  const [formStatus, setFormStatus] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
 
   const handleInputChange = (e, input) => {
+    if (formStatus) {
+      setFormStatus(null);
+    }
+
     const currentFormValues = formValues;
     setFormValues({
       ...currentFormValues,
@@ -85,7 +94,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setHasFormError(false);
+    setFormStatus(null);
 
     try {
       const res = await post('/.netlify/functions/mailer', {
@@ -95,14 +104,15 @@ const ContactPage = () => {
       });
 
       if (res.status !== 200) {
-        setHasFormError(true);
+        setFormStatus(FORM_STATUS.ERROR);
       } else {
         clearFormValues();
+        setFormStatus(FORM_STATUS.SUCCESS);
       }
 
       setIsSubmitting(false);
     } catch(e) {
-      setHasFormError(true);
+      setFormStatus(FORM_STATUS.ERROR);
     }
 
   }
@@ -153,8 +163,11 @@ const ContactPage = () => {
             </label>
             <textarea required name="message" id="message" value={formValues.message} onChange={(e) => handleInputChange(e, "message")} />
           </FormField>
-          {hasFormError && (
-            <ErrorMessage>Whoops, something has gone wrong when sending your message. Please try again...</ErrorMessage>
+          {formStatus === FORM_STATUS.ERROR && (
+            <StatusMessage type={FORM_STATUS.ERROR}>Whoops, something has gone wrong while sending your message.<br/>Please try again...</StatusMessage>
+          )}
+          {formStatus === FORM_STATUS.SUCCESS && (
+            <StatusMessage type={FORM_STATUS.SUCCESS}>Yay! your message is on it's way to my inbox...<br/>Thank you for getting in touch, I will get back to you within a few days.</StatusMessage>
           )}
           <Button isNavButton={false} buttonText={isSubmitting ? "Sending..." : "Send message"} type="submit" />
         </ContactForm>

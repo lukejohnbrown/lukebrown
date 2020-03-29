@@ -13,6 +13,8 @@ const palette = (darkMode) => ({
   darkGrey: "#7C7C7C",
   yellow: "#F5DE19",
   blue: "#3D348B",
+  error: "#c62828",
+  success: "#9ccc65"
 })
 
 const sizes = ["400px", "500px", "920px"];
