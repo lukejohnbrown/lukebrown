@@ -21,6 +21,7 @@ exports.handler = async ({ body }, context, callback) => {
       statusCode: 500,
       body: "Missing data"
     });
+    return;
   }
 
   try {
@@ -36,7 +37,9 @@ exports.handler = async ({ body }, context, callback) => {
           statusCode: 500,
           body: JSON.stringify(error.message),
         });
+        return;
       }
+
       callback(null, {
         statusCode: 200,
         body: JSON.stringify(info),

@@ -86,21 +86,25 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setHasFormError(false);
-    const res = await post('/.netlify/functions/mailer', {
-      name: formValues.name,
-      email: formValues.emailAddress,
-      message: formValues.message
-    });
 
-    console.log(res);
+    try {
+      const res = await post('/.netlify/functions/mailer', {
+        name: formValues.name,
+        email: formValues.emailAddress,
+        message: formValues.message
+      });
 
-    if (res.status !== 200) {
+      if (res.status !== 200) {
+        setHasFormError(true);
+      } else {
+        clearFormValues();
+      }
+
+      setIsSubmitting(false);
+    } catch(e) {
       setHasFormError(true);
-    } else {
-      clearFormValues();
     }
 
-    setIsSubmitting(false);
   }
 
 
