@@ -149,7 +149,7 @@ const ContactPage = () => {
             </label>
             <textarea required name="message" id="message" value={formValues.message} onChange={(e) => handleInputChange(e, "message")} />
           </FormField>
-          {hasFormError || true && (
+          {hasFormError && (
             <ErrorMessage>Whoops, something has gone wrong when sending your message. Please try again...</ErrorMessage>
           )}
           <Button isNavButton={false} buttonText={isSubmitting ? "Sending..." : "Send message"} type="submit" />

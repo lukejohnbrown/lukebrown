@@ -16,6 +16,13 @@ exports.handler = async ({ body }, context, callback) => {
     },
   });
 
+  if (!name || !email || !message) {
+    callback(null, {
+      statusCode: 500,
+      body: "Missing data"
+    });
+  }
+
   try {
     await transporter.verify();
     await transporter.sendMail({
@@ -38,7 +45,7 @@ exports.handler = async ({ body }, context, callback) => {
   } catch (err) {
     callback(null, {
       statusCode: err.response.status,
-      body: "Error!"
+      body: "Network error"
     });
   }
 }
