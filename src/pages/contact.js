@@ -112,6 +112,7 @@ const ContactPage = () => {
 
       setIsSubmitting(false);
     } catch(e) {
+      setIsSubmitting(false);
       setFormStatus(FORM_STATUS.ERROR);
     }
 
