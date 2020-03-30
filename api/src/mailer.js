@@ -19,16 +19,15 @@ exports.handler = async ({ body }, context, callback) => {
   });
 
   if (!GSUITE_CLIENT_ID || !GSUITE_PRIVATE_KEY || !SLACK_HOOK_ENDPOINT || !name || !email || !message) {
-    callback(null, {
+    return {
       statusCode: 500,
       body: "Missing data"
-    });
-    return;
+    };
   }
 
   try {
     // send via slack
-    await post(SLACK_HOOK_ENDPOINT,
+    const { data } = await post(SLACK_HOOK_ENDPOINT,
     {
       text: `------------------ \n\nName: ${sanitizer.sanitize(name)}\n\nEmail: ${sanitizer.sanitize(email)}\n\nMessage: ${sanitizer.sanitize(message)}`,
     });
@@ -39,25 +38,24 @@ exports.handler = async ({ body }, context, callback) => {
       from: "admin@lukebrown.io",
       to: "hello@lukebrown.io",
       subject: 'New contact form entry from lukebrown.io',
-      text: `${sanitizer.sanitize(name)}(${sanitizer.sanitize(email)}) ${sanitizer.sanitize(message)}`,
+      text: `${sanitizer.sanitize(name)} (${sanitizer.sanitize(email)}) ${sanitizer.sanitize(message)}`,
     }, (error, info) => {
       if (error) {
-        callback(null, {
+        return {
           statusCode: 500,
           body: JSON.stringify(error.message),
-        });
-        return;
+        };
       }
-
-      callback(null, {
-        statusCode: 200,
-        body: JSON.stringify(info),
-      });
     });
+
+    return {
+      statusCode: 200,
+      body: "Success"
+    };
   } catch (err) {
-    callback(null, {
+    return {
       statusCode: 500,
       body: "Network error"
-    });
+    };
   }
 }

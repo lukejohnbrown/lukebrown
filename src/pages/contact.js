@@ -97,6 +97,7 @@ const ContactPage = () => {
     setFormStatus(null);
 
     try {
+      // const res = await post('/.netlify/functions/mailer', {
       const res = await post('/.netlify/functions/mailer', {
         name: formValues.name,
         email: formValues.emailAddress,
