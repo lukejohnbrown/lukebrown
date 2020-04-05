@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import styled from "styled-components";
 import { post } from 'axios';
 
@@ -42,6 +42,12 @@ const FormField = styled.div`
     font-size: 1rem;
     outline: none;
     margin-top: ${({ theme }) => theme.space[2]};
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     &:focus {
       border-color: ${({ theme }) => theme.palette.yellow};

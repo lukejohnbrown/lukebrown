@@ -22,6 +22,7 @@ const TitleWrapper = styled.h3`
   display: flex;
   align-items: center;
   font-weight: ${({ theme }) => theme.fontWeight[1]};
+
   svg {
     margin-right: ${({ theme }) => theme.space[2]};
     @media ${({ theme }) => theme.breakpoints.up.md} {

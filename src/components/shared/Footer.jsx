@@ -38,17 +38,17 @@ const FooterLinks = styled.div`
   }
 `;
 
-const Footer = ({ buttonText, buttonLink }) => {
+const Footer = ({ buttonText, buttonLink, isExternalLink = false, isNavButton = true, buttonIcon }) => {
   return (
     <FooterWrapper>
       {buttonText && buttonLink && (
         <ButtonWrapper>
-          <Button isNavButton buttonLink={buttonLink} buttonText={buttonText} />
+          <Button isNavButton={isNavButton} isExternalLink={isExternalLink}  buttonIcon={buttonIcon} buttonLink={buttonLink} buttonText={buttonText} />
         </ButtonWrapper>
       )}
       <FooterLinks>
-        <a href="mailto:hello@lukebrown.io" target="_blank" rel="noreffer">hello@lukebrown.io</a>
-        <a href="https://twitter.com/Lukejohnbrown" target="_blank" rel="noreffer">@lukejohnbrown</a>
+        <a href="mailto:hello@lukebrown.io" target="_blank"  rel="noopener noreferrer" >hello@lukebrown.io</a>
+        <a href="https://twitter.com/Lukejohnbrown" target="_blank"  rel="noopener noreferrer" >@lukejohnbrown</a>
       </FooterLinks>
     </FooterWrapper>
   )

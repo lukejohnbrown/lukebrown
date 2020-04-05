@@ -1,5 +1,6 @@
 
 const palette = (darkMode) => ({
+  contrastColor: darkMode ? "#ffffff" : "#000000",
   bodyBackground: darkMode ? "#202020" : "#FCFCFC",
   text: darkMode ? "#E9E9E9" : "#2F2F2F",
   contrastText: darkMode ? "#2F2F2F" : "#E9E9E9",

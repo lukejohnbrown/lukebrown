@@ -2,8 +2,6 @@ import {
   createGlobalStyle
 } from "styled-components";
 
-import theme from "../../theme";
-
 const GlobalStyle = createGlobalStyle`
   html,
   body,
@@ -119,7 +117,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     color: ${({ theme }) => theme.palette.text};;
     letter-spacing: -0.01em;
-    line-height: 1.6;
+    line-height: 1.5;
+
+    @media ${({ theme }) => theme.breakpoints.up.sm} {
+      line-height: 1.6;
+    }
   }
 
   a {

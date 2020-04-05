@@ -1,0 +1,373 @@
+---
+title: "Top Javascript Array Methods"
+subtitle: "As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilising these methods will give you super powers when working with arrays..."
+categories: "Javascript, Arrays"
+image: "../images/top-javascript-methods-og.png"
+date: "2019-07-20"
+githubLink: "https://github.com/lukejohnbrown/lukebrown.io/blob/master/src/posts/top-javascript-array-methods.mdx"
+---
+
+import { Spacer, Notice } from "../components/post";
+
+## Introduction
+
+As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilising these methods will give you super powers when working with arrays.
+
+<Spacer />
+
+### Array.map()
+
+When you call `.map()` on an array, a function is called on each item of that array where you can modify its contents. This produces a new, modified version of the original array that **always contains the same number of items**.
+
+The `.map()` method is super useful for when you want to modify all the existing items of an array and store the result as a new variable.
+
+For example, here we have an array containing dog names...
+
+```js
+const dogs = ['jeff', 'rocky', 'waggy', 'fluffy'];
+```
+
+Let's say we want to amend each element in the array to add **‘is a good boy’** to each dog name...
+
+```js
+const goodBoys = dogs.map(dog => `${dog} is a good boy!`);
+```
+
+```js result=true
+["jeff is a good boy!", "rocky is a good boy!", "waggy is a good boy!", "fluffy is a good boy!"]
+```
+
+The `.map()` method has constructed a new array that is simply a modified version of our existing array!
+
+Here we have an array of objects that contain the name and age of our dogs in human years. Let's use `.map()` to construct a new array that also includes the age of each dog in dog years...
+
+```js
+const dogsWithHumanAge = [
+    {
+        name: 'Jeff',
+        humanAge: 2
+    },
+    {
+        name: 'Rocky',
+        humanAge: 10
+    }
+];
+
+
+const dogsWithDogAge = dogsWithHumanAge.map(dogObject => {
+    return {
+        ...dogObject,
+        dogAge: dogObject.humanAge * 7
+    }
+});
+```
+
+```js result=true
+[{ name: 'Jeff', humanAge: 2, dogAge: 14 }, { name: 'Rocky', humanAge: 2, dogAge: 70 }]
+```
+
+The `.map()` is extremely useful for a wide range of scenarios and is easily my most used reached for array method.
+
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.map() method?</strong></p>
+        <p className="notice__text">When you want to modify the contents of an existing array and store the result as a new variable</p>
+    </>
+)} />
+
+
+<Spacer />
+
+### Array.filter()
+
+The `.filter()` method is used when you need to get items of an array **conditionally**. `Array.filter()` calls a function on each array item to test that the current item fits a criteria, only if the test returns a `truthy` value is the item included in the newly constructed array.
+The `.filter()` method always returns a new array, if none of the array items pass the test an empty array is returned.
+
+Let’s look at an example...
+
+```js
+const dogs = [
+    {
+        name: 'Jeff',
+        breed: 'German Shepherd',
+        goodBoyRating: 10
+    },
+    {
+        name: 'Rocky',
+        breed: 'Beagle',
+        goodBoyRating: 3
+    },
+    {
+        name: 'Waggy',
+        breed: 'Poodle',
+        goodBoyRating: 4
+    },
+    {
+        name: 'Fluffy',
+        breed: 'Pug',
+        goodBoyRating: 7
+    }
+]
+```
+
+Here we have an array of objects, each object includes a dog name, their breed and their good boy rating (obviously all dogs are good boys but for the purpose of this example lets pretend they are not!)...
+
+Now we want to filter our dogs into ‘good boys’ and ‘bad boys’ based on their good boy rating...
+
+
+```js
+const goodBoys = dogs.filter(dog => dog.goodBoyRating >= 5);
+
+const badBoys = dogs.filter(dog => dog.goodBoyRating < 5);
+```
+
+```js result=true
+// goodBoys
+[{name: "Jeff", breed: "German Shepherd", goodBoyRating: 10}, {name: "Fluffy", breed: "Pug", goodBoyRating: 7}]
+
+// badBoys
+[{name: "Rocky", breed: "Beagle", goodBoyRating: 3}, {name: "Waggy", breed: "Poodle", goodBoyRating: 4}]
+```
+
+Each item of the array is checked to see if it fits the criteria, if it passes the test it is returned within the new array - neat.
+
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.filter() method?</strong></p>
+        <p className="notice__text">When you want to remove all items of an array that do not fit a criteria </p>
+    </>
+)} />
+
+<Spacer />
+
+### Array.reduce()
+
+The `.reduce()` array function may take a little more time to get to grips with. Put simply, calling `.reduce()` on an array *reduces* it down to a single value after executing a function on each item of the array.
+
+The `.reduce()` method takes a callback function as its first parameter and an optional initial value as its second parameter., if an initial value is not supplied the first array value is used. The callback function provides an `accumulator` and `currentValue` parameter used to perform the reduce calculation.
+
+Don't worry if this doesn't make sense just yet, let’s take a look at a really simple example...
+
+```js
+const numbers = [10, 43, 94, 12, 77];
+const total = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+```
+
+```js result=true
+236 // total
+```
+
+In this example, we start at 0 and continue to add each value of the array to a running total. You can think of the accumulator parameter as the current total value and the currentValue as the current array item being looked at.
+
+Now let’s explore a slightly more complicated example. Here we have an array of dogs, let's say we want to 'reduce' this down to a single object containing the names and ages in separate arrays...
+
+```js
+const dogs = [
+	{
+	    name: 'Jeff',
+	    age: 12
+	},
+	{
+	    name: 'Rocky',
+	    age: 2
+	},
+	{
+	    name: 'Waggy',
+	    age: 10
+	},
+	{
+	    name: 'Fluffy',
+	    age: 6
+	}
+];
+
+const averageAge = dogs.reduce((acc, dog) => {
+  acc.names.push(dog.name);
+  acc.ages.push(dog.age);
+	return acc;
+return acc;
+}, {
+	names: [],
+	ages: []
+});
+```
+
+```js result=true
+ {
+	 names: ["Jeff", "Rocky", "Waggy", "Fluffy"]
+	 ages: [12, 2, 10, 6]
+ }
+```
+
+As you can (hopefully) see, once you get familar with `.reduce()` it can be a very powerful tool in your JavaScript toolbox.
+
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.reduce() method?</strong></p>
+        <p className="notice__text">When you want to convert an array down to a single value by manipulating its items</p>
+    </>
+)} />
+
+
+
+<Spacer />
+
+### Array.forEach()
+
+The `.forEach()` method loops over an array and executes a function on each item. The first parameter of `.forEach()` is a callback function that includes the current value and index  of the loop. Let’s take a look at an example...
+
+```js
+const dogs = [
+	{
+	    name: 'Jeff',
+	    age: 4
+	},
+	{
+	    name: 'Rocky',
+	    age: 2
+	},
+	{
+	    name: 'Waggy',
+	    age: 10
+	},
+	{
+	    name: 'Fluffy',
+	    age: 6
+	}
+];
+
+dogs.forEach(dog => {
+    console.log(`${dog.name} is ${dog.age} year[s] old!`);
+});
+```
+
+```js result=true
+Jeff is 4 year[s] old!
+Rocky is 4 year[s] old!
+Waggy is 4 year[s] old!
+Fluffy is 4 year[s] old!
+```
+
+You might notice that the `.forEach()` method is unlike many other array methods (`.map()`, `.filter()` etc.) as it does not return a new array *or* manipulate the array's items.
+
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.forEach() method?</strong></p>
+        <p className="notice__text">When you want to simply loop over each item of any array without constructing a new array </p>
+    </>
+)} />
+
+
+<Spacer />
+
+### Array.find()
+
+You can use the `.find()` method to return the first element in an array that passes a given test. The `.find()` method will pass each element of the array through it’s callback function until it finds an element that meets the criteria. If no elements are found, undefined is returned.
+
+Lets explore a quick example. Let’s use the same array of dogs we used in the previous example, but we will use the `.find()` method to return the first dog older than 10...
+
+```js
+const oldDog = dogs.find(dog => dog.age >= 10);
+```
+
+```js result=true
+{ age: 10, name: "Waggy" } // Oldest dog
+```
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.find() method?</strong></p>
+        <p className="notice__text">When you need to get the first item of an array that passes an explicitly defined test</p>
+    </>
+)} />
+
+<Spacer />
+
+### Array.every()
+
+It may not surprise you that the `.every()` method checks if **every** element in the array passes a test. If each element of the array passes the test, `.every()` will return `true`, if the method reaches **any** element that does not pass the test, it returns `false`.
+
+Here we have an array of people objects, let's use the `.every()` method to check that all the people in the array are over the age of 18....
+
+```js
+const people = [
+    {
+        name: 'Luke',
+        age: 24
+    },
+    {
+        name: 'Jess',
+        age: 20
+    },
+    {
+        name: 'Steve',
+        age: 43
+    },
+    {
+        name: 'Lucy',
+        age: 19
+    }
+]
+
+const allAdults = people.every(person => person.age > 18);
+```
+
+```js result=true
+true // they are all over 18!
+```
+
+<Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.every() method?</strong></p>
+        <p className="notice__text">When you want to confirm that <strong>every</strong> item of an array passes an explicitly defined test</p>
+    </>
+)} />
+
+<Spacer />
+
+### Array.some()
+
+The `.some()` method is similar to the `.every()` method, but instead of returning true if all elements of an array pass the test, it returns true if at least *one* element passes the test.
+
+If the `.some()` method finds a successful array element it stops and returns `true`. However, if `.some()` reaches the end of the array without success, it returns `false`.
+
+Lets use our people array again, but this time we will be checking if *some* of the people are under the age of 18...
+
+```js
+const people = [
+    {
+        name: 'Luke',
+        age: 24
+    },
+    {
+        name: 'Jess',
+        age: 20
+    },
+    {
+        name: 'Steve',
+        age: 43
+    },
+    {
+        name: 'Lucy',
+        age: 19
+    }
+]
+
+const someChildren = people.some(person => person.age < 18);
+```
+
+```js result=true
+false // none of our people are under 18!
+```
+
+ <Notice content={(
+    <>
+        <p className="notice__title"><strong>When should you use the Array.some() method?</strong></p>
+        <p className="notice__text">When you need to confirm that <strong>one or more</strong> items in an array passes an explicitly defined test</p>
+    </>
+)} />
+
+<Spacer />
+
+### Conclusion
+
+As you can (hopefully) see, JavaScript gives us some really neat methods for dealing with arrays. If you harness their power, it is unlikely that you will ever need to reach for an old-school `for` loop again and  your codebase will likely be much more maintainable - who wouldn't want that?!

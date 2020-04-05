@@ -8,6 +8,22 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-netlify',
     'gatsby-plugin-styled-components',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+              disableBgImage: true
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -15,8 +31,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/src/posts`,
+      },
+    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -32,10 +54,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [{
-          family: `Hind`,
-          variants: [`400`, `500`, `600`, `800`],
-        }, ],
+        fonts: [
+          {
+            family: `Heebo`,
+            variants: [`400`, `500`, `600`, `800`],
+          },
+          {
+            family: 'Source Code Pro',
+            variants: ['400']
+          }
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,0 +1,222 @@
+---
+title: "Managing State with React Hooks"
+subtitle: "Before the introduction of React Hooks, there was no way of using state in a functional component. But we can now use the useState Hook to apply local state to our functional components..."
+categories: "Javascript, React, Hooks"
+image: "../images/managing-state-og.png"
+date: "2019-07-23"
+githubLink: "https://github.com/lukejohnbrown/lukebrown.io/blob/master/src/posts/managing-state-with-react-hooks.mdx"
+---
+
+import { Spacer } from "../components/post";
+
+Before the introduction of React Hooks, there was no way of using state in a functional component. But we can now use the `useState` Hook to apply local state to our functional components.
+
+React Hooks have been well received by the community, and you will likely notice that many popular libraries already offer a solution that uses Hooks. You may also notice that all Hooks (should) follow the same naming convention, which is the word *use* followed by the data or functionality being provided by the Hook.
+
+Thats enough chit-chat, let's start using our first Hook (have I said the word Hooks enough yet?). Let's start by exploring how can set state in our functional component.
+
+<Spacer />
+
+### Setting State with React Hooks
+
+First, we need to import `useState` from the React library to use in our component...
+
+```js
+import React, { useState } from "react";
+```
+
+We can then create our functional component and call `useState` before our return statement...
+
+```jsx
+import React, { useState } from "react";
+
+
+const ShoppingList = () => {
+  const [shoppingList, setShoppingList] = useState(["Bread", "Milk", "Eggs"]);
+  return (
+    <>
+      <ul>
+        {shoppingList.map(listItem => (
+          <li>{listItem}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default ShoppingList;
+```
+
+As you can see, the `useState` method returns two items, which are -
+
+1. The *current* value of the state item, which we are storing as a variable named `shoppingList`.
+2. A function for updating the state item, which we are storing as a variable named `setShoppingList`.
+
+The `useState` Hook accepts a single argument which is the initial value of the state item. We are setting our initial value to an array containing shopping list items.
+
+Don't worry if you don't recognize the funky square brackets on line `4`, we are using [ES6 destructing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) here to grab the array items returned by `useState` and assigning them to variables.
+
+The `setShoppingList` method returned by the `useState` Hook can be used to update our `shoppingList` state. In this example we have a button that simply adds "Bread" to our shopping list....
+
+```jsx
+import React, { useState } from "react";
+
+const ShoppingList = () => {
+  const [shoppingList, setShoppingList] = useState(["Bread", "Milk", "Eggs"]);
+  return (
+    <>
+      <ul>
+        {shoppingList.map(listItem => (
+          <li>{listItem}</li>
+        ))}
+      </ul>
+
+      <button onClick={() => setShoppingList([
+        ...shoppingList,
+        "Bread"
+      ])}>Add item</button>
+    </>
+  );
+}
+
+export default ShoppingList;
+```
+
+Whatever value we pass to `setShoppingList` will completely overwrite our `shoppingList` state, so it is important that we replicate the existing shopping list items before appending a new item. To achieve this we are using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank">spread syntax</a> to "spread" all the existing values of our shopping list into our new array.
+
+
+Great, we have successfully added state to our functional component, but how do we replicate lifecycle methods?
+
+<Spacer />
+
+### Replicating Lifecycle Methods Using the *useEffect* Hook
+
+With React classes, we use "lifecycle" methods such as `componentDidMount` and `componentWillMount` to run some code when an event occurs in our component (these are known as *side effects*). Although we don't have access to these lifecycle methods within functional components, we can use the `useEffect` Hook to replicate their functionality.
+
+**By default the `useEffect` hook runs after every render of the component, this includes the initial render and any re-rendering caused by a change in state.**
+
+Let's take a look at an example:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+const ShoppingList = () => {
+  const [shoppingList, setShoppingList] = useState(["Bread", "Milk", "Eggs"]);
+  const [newItem, setNewItem] = useState('');
+
+  useEffect(() => {
+    if (shoppingList.includes(newItem)) {
+      alert("You already have that item in your shopping list!");
+    }
+  });
+
+  return (
+    <>
+      <ul>
+        {shoppingList.map(listItem => (
+          <li>{listItem}</li>
+        ))}
+      </ul>
+
+      <input value={newItem} onChange={(e) => setNewItem(e.target.value)} />
+
+      <button onClick={() => setShoppingList([
+        ...shoppingList,
+        newItem
+      ])}>Add item</button>
+    </>
+  );
+}
+
+export default ShoppingList;
+```
+
+We have made our `ShoppingList` component a bit cleverer by including a new state item called `newItem` and a text field that updates our `newItem` state when changed. Also, clicking the button now adds the `newItem` to our shopping list rather than simply appending "Bread" (how much bread could you possibly need?!).
+
+More notably, we are using the `useEffect` Hook to display an annoying alert if the user enters an item that already appears in `shoppingList`.
+
+Here is a run-down on what is happening here:
+
+1. Our user types into the text field, firing the `onChange` event which in turn updates our `newItem` state
+2. As the state of our component has been updated a re-render is performed
+3. The code within our `useEffect` Hook gets called on each render and the check is performed
+
+Pretty neat, right? As mentioned, the `useEffect` Hook will run after every render of your component, - but what if we *only* want it to run after specific items of state are changed?
+
+
+<Spacer />
+
+### Skipping over Effects to Improve Performance
+
+In our previous example, the `useEffect` Hook was running on every render of our component. This isn't really a problem here as we are only dealing with a small amount of effects, but what if had a much larger component?
+
+Let's update our shopping list component to include the current time as an item of state, we will need to update the time every second to keep it up to date. This causes a re-render of our component every second, which in turn runs our `useEffect` Hook every second.
+
+However, The code inside our `useEffect` Hook is not concerned with `time`, so we need to tell our Hook to **only** run when `newItem` or `shoppingList` is updated.
+
+**We can tell our `useEffect` Hook what items we want it to "listen" to by including them in an array as the second argument of the function call. **
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+const ShoppingList = () => {
+  const [shoppingList, setShoppingList] = useState(["Bread", "Milk", "Eggs"]);
+  const [newItem, setNewItem] = useState('');
+  const [time, setTime] = useState();
+
+  setInterval(() => {
+    const now = new Date();
+    setTime(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+  }, 1000);
+
+  useEffect(() => {
+    if (shoppingList.includes(newItem)) {
+      alert("You already have that item on your shopping list!");
+    }
+  }, [newItem, shoppingList]);
+
+  return (
+    <>
+      <ul>
+        {shoppingList.map(listItem => (
+          <li>{listItem}</li>
+        ))}
+      </ul>
+
+      <input value={newItem} onChange={(e) => setNewItem(e.target.value)} />
+
+      <button onClick={() => setShoppingList([
+        ...shoppingList,
+        newItem
+      ])}>Add item</button>
+
+      <p>The time is currently {time}</p>
+    </>
+  );
+}
+
+export default ShoppingList;
+```
+
+As you can see, we have added a new item to state called `time`. By using `setInterval` we are able to update the time every second as a neatly formatted string.
+
+More importantly, we are passing `[newItem, shoppingList]` to our `useEffect` Hook in order to tell it when to run. Now when our component triggers a re-render caused by a time update, it doesn't run our code inside `useEffect`, which is a great performance gain!
+
+<Spacer />
+
+### That's all, folks!
+
+Before *Hooks* were introduced to React in version 16.8, this was a common occurrence for me when building React components...
+
+1. Create a component as a neat, small functional component
+2. **&ast;1 hour later&ast;**
+3. Say something along the lines of *"Ah, I actually need to use state and/or a lifecycle method in that component I created earlier!"*
+4. Go back and convert the component from a functional component to a class based component
+
+I reached a point where I was creating all of my components using classes to avoid this issue, which is certainly not good practice. React Hooks solves this problem by bringing features to functional components that had previously **only** been available to class based components.
+> React Hooks let you use more of React's features without reaching for classes
+
+Not only that, React Hooks also offers a cleaner way of sharing reusable behavior between components without using messier solutions like render props and higher order component.
+
+Hopefully this was a helpful lesson on how to manage state using React Hooks. I implore you to start using Hooks in your functional components today, you might even find that you never reach for a class again (not that I have a problem with classes, please dont @ me).
+

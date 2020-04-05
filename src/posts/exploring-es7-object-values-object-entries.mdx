@@ -1,0 +1,123 @@
+---
+title: "Exploring ES7's new Object methods"
+subtitle: "As you might have already guessed, Object.values() returns an array of the Object's values (basically the opposite to Object.keys()), whereas Object.entries() returns..."
+categories: "Javascript, ES7"
+image: "../images/exploring-es7-og.png"
+date: "2019-07-22"
+githubLink: "https://github.com/lukejohnbrown/lukebrown.io/blob/master/src/posts/exploring-es7-object-values-object-entries.mdx"
+---
+
+import { Spacer } from "../components/post";
+
+## Introduction
+
+For a while now we have had the static Javascript method *Object.keys()*, a method that takes an object and returns the object's keys in an array, like so...
+
+```js
+const dogs = {
+	Rocky: 'Bulldog',
+	Jeff: 'Poodle',
+	Sausage: 'Dachshund'
+}
+
+const dogKeys = Object.keys(dogs);
+```
+
+```js result=true
+["Rocky", "Jeff", "Sausage"] //dogKeys
+```
+
+As you can see, we get back an Array containing `'Rocky'`, `'Jeff'` and `'Sausage'`, the keys of our dogs object.
+
+*Object.keys()* has been around for quite some time now so browser compatibility is great, but it is not without its flaws. Thankfully, ES7 brings two new Object methods to the specification to make our lives easier when working with Javascript Objects, these are `Object.values()` and *Object.entries()*.
+
+As you might have already guessed, `Object.values()` returns an array of the Object's **values** (basically the opposite to *Object.keys()*), whereas *Object.entries()* returns an array where each array item is an array containing a [key, value] pair for the object element.
+
+Don't worry, this will make more sense when we look at some examples...
+
+<Spacer />
+
+### Using *Object.values()*
+
+Here we have an object containing the ingredients for a delicious cake. To get the keys of the object, we can use our old friend *Object.keys()*...
+
+```js
+const ingredients = {
+    eggs: 4,
+    lemons: 2,
+    sugar: '225g',
+    flour: '225g',
+    butter: '180g'
+}
+
+const ingredientKeys = Object.keys(ingredients);
+```
+```js result=true
+["eggs", "lemons", "sugar", "flour", "butter"] // ingredientKeys
+```
+
+Now let's make use of `Object.values()` to get an array of all of the values within our `ingredients` object...
+
+```js
+const ingredientValues = Object.values(ingredients);
+```
+```js result=true
+[4, 2, "225g", "225g", "180g"] //ingredientValues
+```
+
+As you can see, `Object.values()` has given us an array containing all the values of our ingredients. Simple stuff so far, right? Now let's give *Object.entries()* a whirl...
+
+<Spacer />
+
+### Using *Object.entries()*
+
+When you pass an object to *Object.entries()* it returns an array containing every [key value] pair of the object's properties.
+
+Let's try it on our ingredients object...
+
+```js
+const ingredientEntries = Object.entries(ingredients);
+```
+```js result=true
+[
+    ["eggs", 4],
+    ["lemons", 2],
+    ["sugar", "225g"],
+    ["flour", "225g"],
+    ["butter", "180g"]
+]
+```
+
+Sweet! (No pun intended), we now have a neat array containing the [`key` `value`] pairs of all of our ingredients.
+
+<Spacer />
+
+#### Where might Object.values() and Object.keys() be useful?
+
+Let's imagine that our recipe object was given to us via a database request and we now want to display the ingredients to our users in an unordered list.
+
+Previously, we may have used *Object.keys()* to achieve this by looping over each key and appending a new item to the list.
+
+Here's is how that might look using *Object.keys()*...
+
+```js
+const ul = document.querySelector('.ingredients');
+
+Object.keys(ingredients).forEach(ingredient =>
+  ul.innerHTML += `<li>${ingredients[ingredient]} ${ingredient}</li>`
+)
+```
+
+There is nothing wrong with this solution, but it could certainly be neater. When using *Object.keys()* we need to awkwardly fetch the item's value by accessing it via the ingredients object, which doesn't look too pretty.
+
+Let's take a look at how *Object.entries()* could tidy this up. In this example we are not reaching outside of the loop to grab the `ingredient` object value, as *Object.entries()* gives us both the `key` and the `value`...
+```js
+const ul = document.querySelector('.ingredients');
+
+Object.entries(ingredients).forEach(([key, val]) => {
+    ul.innerHTML += `<li>${val} ${key}</li>`;
+});
+```
+
+As *Object.entries()* returns an array for each object property, we can use ES6 **destructuring** to tidy things up. In this example we are immediately destructuring the `key` and `value` from the array and assigning them each to a variable that we can use in our function.
+

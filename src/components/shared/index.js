@@ -9,5 +9,6 @@ export { default as DesignIcon } from "./DesignIcon";
 export { default as DevelopIcon } from "./DevelopIcon";
 export { default as WordpressIcon } from "./WordpressIcon";
 export { default as SPAIcon } from "./SPAIcon";
+export { default as TwitterIcon } from "./TwitterIcon";
 export { default as Footer } from "./Footer";
 export { default as Button } from "./Button";

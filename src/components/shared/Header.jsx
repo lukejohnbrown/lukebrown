@@ -14,6 +14,10 @@ const HeaderWrapper = styled.header`
 const Logo = styled.img`
   width: 37px;
   border: 1px solid #F5F5F5;
+  @media (min-width: 365px) {
+    width: 45px;
+  }
+
   @media ${({ theme }) => theme.breakpoints.up.sm} {
     width: 43px;
   }
