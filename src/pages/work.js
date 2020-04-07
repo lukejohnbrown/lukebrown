@@ -30,7 +30,7 @@ const PortfolioItems = styled.section`
 const WorkPage = () => {
   return (
     <Layout>
-      <Seo title="Work" />
+      <Seo title="See my work" description="I have had the pleasure of working with some great businesses, here is a collection of some of those collaborations." />
       <Container>
         <Title>Let’s take a look at some previous projects...</Title>
         <p>I have had the pleasure of working with some great businesses, here is a collection of some of those collaborations.</p>

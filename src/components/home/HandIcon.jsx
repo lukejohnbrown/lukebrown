@@ -4,7 +4,7 @@ import styled from "styled-components";
 const HandIconWrapper = styled.svg`
   width: 37px;
   height: 37px;
-  margin: -3px 0 0 ${({ theme }) => theme.space[3]};
+  margin: -5px 0 0 ${({ theme }) => theme.space[3]};
   animation-name: wave;
   animation-duration: 2.5s;
   animation-iteration-count: 1;

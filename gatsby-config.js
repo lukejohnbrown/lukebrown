@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Luke Brown`,
-    description: `TODO`,
+    description: `Freelance web designer and developer from sunny Cardiff, Wales`,
     author: `@lukejohnbrown`,
   },
   plugins: [
@@ -45,10 +45,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#F5DE19`,
+        theme_color: `#F5DE19`,
         display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
       },
     },
     {
