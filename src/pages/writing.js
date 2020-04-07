@@ -38,11 +38,13 @@ const WritingPage = ({ data: { allMdx: { edges } } }) => (
     <Container>
       <Title>Latest blog posts</Title>
 
-      {edges.map(({ node: { id, fields, frontmatter }}) => (
-        <PostLink to={fields.slug} key={id}>
-          <h2>{frontmatter.title}</h2>
-          <p>{frontmatter.subtitle}</p>
-        </PostLink>
+      {edges
+        .sort((a, b) => new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date))
+        .map(({ node: { id, fields, frontmatter }}) => (
+          <PostLink to={fields.slug} key={id}>
+            <h2>{frontmatter.title}</h2>
+            <p>{frontmatter.subtitle}</p>
+          </PostLink>
       ))}
 
       <Footer buttonText="Fancy a chat?" buttonLink="/contact" />

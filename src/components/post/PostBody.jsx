@@ -27,14 +27,22 @@ const SPostBody = styled.article`
     margin-top: ${({ theme }) => theme.space[4]};
   }
 
+  p {
+    margin-bottom: ${({ theme }) => theme.space[4]};
+  }
+
+  a {
+    color: ${({ theme }) => theme.palette.blue};
+
+  }
 
   ul, ol {
-    padding-left: 15px;
-    margin-bottom: ${({ theme }) => theme.space[2]};
+    margin-bottom: ${({ theme }) => theme.space[4]};
+    list-style: none;
 
     li {
       &:not(:last-child) {
-        margin-bottom: ${({ theme }) => theme.space[1]};
+        margin-bottom: ${({ theme }) => theme.space[2]};
       }
     }
 
@@ -48,9 +56,38 @@ const SPostBody = styled.article`
     }
   }
 
-  p {
-    margin-bottom: ${({ theme }) => theme.space[4]};
+  ul li {
+    position: relative;
+    padding-left: ${({ theme }) => theme.space[4]};
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 2px;
+      background: ${({ theme }) => theme.palette.blue};
+      width: 6px;
+      height: 6px;
+      font-weight: 600;
+      border-radius: 50%;
+    }
   }
+
+  ol li {
+    position: relative;
+    counter-increment: step-counter;
+    padding-left: ${({ theme }) => theme.space[4]};
+
+    &::before {
+      content: counter(step-counter) ;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: ${({ theme }) => theme.palette.blue};
+      font-weight:600;
+    }
+  }
+
 
   .gatsby-resp-image-wrapper {
     margin: ${({ theme }) => theme.space[4]} auto;

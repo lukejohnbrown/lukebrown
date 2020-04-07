@@ -9,11 +9,9 @@ githubLink: "https://github.com/lukejohnbrown/lukebrown.io/blob/master/src/posts
 
 import { Spacer, Notice } from "../components/post";
 
-## Introduction
-
 As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilising these methods will give you super powers when working with arrays.
 
-<Spacer />
+<Spacer space="1" />
 
 ### Array.map()
 
@@ -68,12 +66,7 @@ const dogsWithDogAge = dogsWithHumanAge.map(dogObject => {
 
 The `.map()` is extremely useful for a wide range of scenarios and is easily my most used reached for array method.
 
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.map() method?</strong></p>
-        <p className="notice__text">When you want to modify the contents of an existing array and store the result as a new variable</p>
-    </>
-)} />
+<Notice title="When should you use the Array.map() method?" text="When you want to modify the contents of an existing array and store the result as a new variable" />
 
 
 <Spacer />
@@ -131,12 +124,7 @@ const badBoys = dogs.filter(dog => dog.goodBoyRating < 5);
 
 Each item of the array is checked to see if it fits the criteria, if it passes the test it is returned within the new array - neat.
 
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.filter() method?</strong></p>
-        <p className="notice__text">When you want to remove all items of an array that do not fit a criteria </p>
-    </>
-)} />
+<Notice title="When should you use the Array.filter() method?" text="When you want to remove all items of an array that do not fit a criteria" />
 
 <Spacer />
 
@@ -201,12 +189,7 @@ return acc;
 
 As you can (hopefully) see, once you get familar with `.reduce()` it can be a very powerful tool in your JavaScript toolbox.
 
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.reduce() method?</strong></p>
-        <p className="notice__text">When you want to convert an array down to a single value by manipulating its items</p>
-    </>
-)} />
+<Notice title="When should you use the Array.reduce() method?" text="When you want to convert an array down to a single value by manipulating its items" />
 
 
 
@@ -250,12 +233,7 @@ Fluffy is 4 year[s] old!
 
 You might notice that the `.forEach()` method is unlike many other array methods (`.map()`, `.filter()` etc.) as it does not return a new array *or* manipulate the array's items.
 
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.forEach() method?</strong></p>
-        <p className="notice__text">When you want to simply loop over each item of any array without constructing a new array </p>
-    </>
-)} />
+<Notice title="When should you use the Array.forEach() method?" text="When you want to simply loop over each item of any array without constructing a new array" />
 
 
 <Spacer />
@@ -273,12 +251,7 @@ const oldDog = dogs.find(dog => dog.age >= 10);
 ```js result=true
 { age: 10, name: "Waggy" } // Oldest dog
 ```
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.find() method?</strong></p>
-        <p className="notice__text">When you need to get the first item of an array that passes an explicitly defined test</p>
-    </>
-)} />
+<Notice title="When should you use the Array.find() method?" text="When you need to get the first item of an array that passes an explicitly defined test" />
 
 <Spacer />
 
@@ -315,12 +288,7 @@ const allAdults = people.every(person => person.age > 18);
 true // they are all over 18!
 ```
 
-<Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.every() method?</strong></p>
-        <p className="notice__text">When you want to confirm that <strong>every</strong> item of an array passes an explicitly defined test</p>
-    </>
-)} />
+<Notice title="When should you use the Array.every() method?" text="When you want to confirm that <strong>every</strong> item of an array passes an explicitly defined test" />
 
 <Spacer />
 
@@ -359,12 +327,7 @@ const someChildren = people.some(person => person.age < 18);
 false // none of our people are under 18!
 ```
 
- <Notice content={(
-    <>
-        <p className="notice__title"><strong>When should you use the Array.some() method?</strong></p>
-        <p className="notice__text">When you need to confirm that <strong>one or more</strong> items in an array passes an explicitly defined test</p>
-    </>
-)} />
+ <Notice title="When should you use the Array.some() method?" text="When you need to confirm that <strong>one or more</strong> items in an array passes an explicitly defined test"  />
 
 <Spacer />
 

@@ -49,6 +49,7 @@
  .token {
   font-family: 'Source Code Pro', monospace;
   letter-spacing: -0.1px;
+  font-size: 0.95rem;
  }
 
  .plain:only-child {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TitleWrapper = styled.h1`
   font-size: ${({ theme }) => theme.fontSize[600]};
   font-weight: ${({ theme }) => theme.fontWeight[2]};
-  margin: ${({ theme }) => theme.space[6]} 0 ${({ theme }) => theme.space[4]} 0;
+  margin: ${({ theme }) => theme.space[6]} 0 ${({ theme }) => theme.space[5]} 0;
   line-height: 1.1;
   display: flex;
   align-items: center;
