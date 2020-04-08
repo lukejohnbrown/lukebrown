@@ -52,7 +52,7 @@ const IndexPage = () => (
       <IntroText>
         These days, browsing the internet can feel like a bit of a chore. It seems as though every website you visit immediately hounds you with cookie notices and newsletter sign ups, resulting in a horrible user experience.
         <br/><br/>
-        However, there is some good news - <strong>It doesn’t have to be this way!</strong> I specialise in building online experiences that are a joy for your customers to use without compromising on style.
+        <strong>However, it doesn't have to be this way!</strong> I specialise in building online experiences that are a joy for your customers to use without compromising on style.
         <br/><br/>
         I am sorry for the <strike>slightly</strike> very cheesy sales pitch, but there is no simpler way of putting it.
       </IntroText>
