@@ -16,6 +16,7 @@ import {
 } from "../components/home";
 
 const Subtitle = styled.h2`
+  margin-top: -${({ theme }) => theme.space[1]};
   font-size: ${({ theme }) => theme.fontSize[200]};
   font-weight: ${({ theme }) => theme.fontWeight[1]};
 `;
