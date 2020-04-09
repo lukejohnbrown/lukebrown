@@ -62,7 +62,7 @@ const IndexPage = () => (
 
         <ServiceWrapper>
           <ServiceInfo title="Bespoke Website Design" icon={<DesignIcon />}>
-            I love to work with business owners and individuals to create bespoke designs that suits their brand perfectly. I believe that there is more to a professional looking website than it simply “looking pretty”. Designing for the web requires consideration for every user that visits your site, which is why we always approach design by prioritising user experience and accessibility.
+            I love to work with business owners and individuals to create bespoke designs that suit their brand perfectly. I believe that there is more to a professional looking website than it simply “looking pretty”. Designing for the web requires consideration for every user that visits your site, which is why we always approach design by prioritising user experience and accessibility.
           </ServiceInfo>
         </ServiceWrapper>
 

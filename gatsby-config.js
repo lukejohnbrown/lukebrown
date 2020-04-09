@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Luke Brown`,
-    description: `Freelance web designer and developer from sunny Cardiff, Wales`,
+    description: `I am a Cardiff based developer who loves to work with business owners and individuals to create bespoke websites that suit their brand perfectly`,
     author: `@lukejohnbrown`,
   },
   plugins: [

@@ -23,19 +23,6 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme(false)}>
       <GlobalStyle />
-      <Helmet
-        title="Luke Brown"
-        meta={[
-          {
-            name: "description",
-            content: "TODO",
-          },
-          {
-            name: "keywords",
-            content: "TODO",
-          },
-        ]}
-      />
 
       <LayoutWrapper>
           <Transition
