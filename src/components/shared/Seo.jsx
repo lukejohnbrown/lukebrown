@@ -10,7 +10,9 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+const DEFAULT_OG_IMAGE = "https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586449250/lukebrown.io/og.png";
+
+const SEO = ({ description, lang, meta, image = DEFAULT_OG_IMAGE, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -42,6 +44,10 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          property: `og:image`,
+          content: image,
         },
         {
           property: `og:description`,
