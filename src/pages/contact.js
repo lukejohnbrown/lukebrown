@@ -128,7 +128,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <Seo title="Get in touch" description="Want to discuss a project you have in mind? I would love to hear from you! It all starts with a commitment free chat over a cup of tea..." />
+      <Seo title="Get in Touch" description="Want to discuss a project you have in mind? I would love to hear from you! It all starts with a commitment free chat over a cup of tea..." />
       <Container>
         <Title>Want to discuss a project?</Title>
         <p>Want to discuss a project you have in mind? I would love to hear from you! It all starts with a commitment free chat over a cup of tea...</p>

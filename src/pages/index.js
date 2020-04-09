@@ -40,7 +40,7 @@ const ServiceWrapper = styled.div `
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Freelance web designer and developer" />
+    <Seo title="Freelance Web Designer and Developer" />
     <Container>
       <Title>
         Hi there, I'm Luke

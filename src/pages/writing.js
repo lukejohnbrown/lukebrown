@@ -34,7 +34,7 @@ const PostLink = styled(Link)`
 
 const WritingPage = ({ data: { allMdx: { edges } } }) => (
   <Layout>
-    <Seo title="Latest blog posts" description="When I learn something new, I like to “make it stick” by writing about it here, on this blog." />
+    <Seo title="Latest Blog Posts" description="When I learn something new, I like to “make it stick” by writing about it here, on this blog." />
     <Container>
       <Title>Latest blog posts</Title>
 
