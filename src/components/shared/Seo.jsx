@@ -50,6 +50,14 @@ const SEO = ({ description, lang, meta, image = DEFAULT_OG_IMAGE, title }) => {
           content: image,
         },
         {
+          property: `og:image:width`,
+          content: "1200",
+        },
+        {
+          property: `og:image:height`,
+          content: "1200",
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
