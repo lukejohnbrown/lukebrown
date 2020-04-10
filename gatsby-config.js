@@ -3,6 +3,7 @@ module.exports = {
     title: `Luke Brown`,
     description: `I am a Cardiff based developer who loves to work with business owners and individuals to create bespoke websites that suit their brand perfectly`,
     author: `@lukejohnbrown`,
+    siteUrl: `https://lukebrown.io`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
