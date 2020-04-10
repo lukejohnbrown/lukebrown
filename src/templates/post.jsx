@@ -18,7 +18,7 @@ const PostTemplate = ({ location: { href }, data: { mdx: { frontmatter, body, su
 return (
   <Layout>
     <Container>
-      <Seo description={frontmatter.subtitle} title={frontmatter.title} />
+      <Seo description={frontmatter.subtitle} title={frontmatter.title} image={frontmatter.image} />
       <Title>{frontmatter.title}</Title>
       <PostBody content={body} />
       <Footer buttonIcon={<TwitterIcon />} isExternalLink buttonLink={`https://twitter.com/share?url=http://${href}`} buttonText="Share this post on Twitter" />
@@ -34,7 +34,8 @@ export const pageQuery = graphql`
                 title,
                 subtitle,
                 categories,
-                date
+                date,
+                image
             }
             body
         }
