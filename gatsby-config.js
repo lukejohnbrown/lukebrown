@@ -10,6 +10,8 @@ module.exports = {
     'gatsby-plugin-styled-components',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -45,7 +47,7 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#F5DE19`,
+        background_color: `#FCFCFC`,
         theme_color: `#F5DE19`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,

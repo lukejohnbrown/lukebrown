@@ -20,7 +20,6 @@ const Subtitle = styled.p`
 `;
 
 const Disclaimer = styled.p`
-  font-size: ${({ theme }) => theme.fontSize[-100]};
   margin-top: ${({ theme }) => theme.space[1]};
 `;
 
