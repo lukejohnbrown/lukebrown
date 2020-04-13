@@ -29,6 +29,13 @@ const SPostBody = styled.article`
 
   p {
     margin-bottom: ${({ theme }) => theme.space[4]};
+
+    code {
+      font-family: 'Source Code Pro', monospace;
+      background: #eee;
+      margin: 0 2px;
+      padding: 1px 3px;
+    }
   }
 
   a {
@@ -88,8 +95,13 @@ const SPostBody = styled.article`
     }
   }
 
+  img {
+    max-width: 100%;
+    display: block;
+  }
 
-  .gatsby-resp-image-wrapper {
+  .gatsby-resp-image-wrapper,
+  figure {
     margin: ${({ theme }) => theme.space[4]} auto;
     max-width: 100% !important;
   }

@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Transition } from "react-spring/renderprops";
-import Helmet from 'react-helmet';
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, Header } from ".";
 

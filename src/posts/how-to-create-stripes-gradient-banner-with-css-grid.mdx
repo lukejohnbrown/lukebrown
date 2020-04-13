@@ -1,0 +1,178 @@
+---
+title: "How to create Stripe's gradient banner with CSS Grid"
+subtitle: "Stripe’s website is often used as an example of excellent web design, and you can see exactly why. I particularly like the background effect used within their banner so I decided to figure out how to build it using CSS Grid."
+categories: "CSS, grid, CSS Grid"
+image: "https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586790345/lukebrown.io/stripes-gradient-banner-og.png"
+date: "2020-04-11"
+---
+
+import { Spacer, Notice, ImageWithCaption } from "../components/post";
+
+Want to jump straight in to the code? Check out the solution on <a href="https://codepen.io/lukejohnbrown/pen/WNQbMzO" target="_blank">Codepen</a>.
+
+Stripe’s website is often used as an example of excellent web design, and you can see exactly why. I particularly like the background effect used within their banner, so I decided to figure out how to build it using CSS Grid.
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586680889/lukebrown.io/stripe-banner.png" imageAlt="Screenshot of Stripe's homepage" caption="Banner from the homepage of stripe.com" />
+
+Although hopefully it goes without saying, the design and colors used within this post are all borrowed and inspried by <a href="https://stripe.com">stripe.com</a>.
+
+<Spacer space="4" />
+
+## Dissecting the Banner
+
+The first thing you notice about the banner is that it is presented at an angle. This makes it difficult to investigate, so if you remove the `transform: skew()` style applied to the banner wrapper you get an idea of how it looks when straight:
+
+![Stripe's banner without transform: skew()](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586683175/lukebrown.io/stripe-banner-straight.png)
+
+Initially I assumed that this style was achieved by using a background image, but it turns out it is simply a collection of five `<span>` elements wrapped in a `<div>`.
+
+Each `<span>` has a different background color and position to make up this neat gradient effect, which you can see demonstrated here:
+
+![](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586683860/lukebrown.io/banner-spans-outlined.png)
+
+Although Stripe uses absolute positioning to here (which is likely for better browser support), this is actually pretty straight forward to achieve with CSS Grid.
+
+<Spacer space="4" />
+
+## The Solution with CSS Grid
+
+When building with CSS grid, it helps to visualise the layout as a grid (which sounds obvious when you say it out loud). As you can see, the Stripe banner is a grid made up of `6` columns and `4` rows:
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586692130/lukebrown.io/stripe-banner-grid-min.png" imageAlt="The Stripe banner with a grid overlay" caption="The Stripe banner can be visualised with a 6 x 4 grid" />
+
+Using the same markup as Stripe, we can start by defining our HTML:
+
+```
+<div id="stripes">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+```
+
+Let's start by applying some CSS to the wrapper element, which has a background gradient and a display property of `grid` with `6` columns and `4` rows. We also have to define an explicit height as we are not including any content within the banner that would traditionally give it a height.
+
+```css
+:root {
+  --background: linear-gradient(150deg, #53f 15%, #05d5ff 70%, #a6ffcb 94%);
+  --first: #53f;
+  --second: #4553ff;
+  --third: #4f40ff;
+  --fourth: #25ddf5;
+  --fifth: #1fa2ff;
+}
+
+#stripes {
+  width: 100%;
+  height: 35vw;
+  background: var(--background);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+```
+
+<Notice title="What is that funky syntax at the start of our CSS?" text="We are using CSS variables to define the gradient background of the banner and the background color of each block." />
+
+
+<Spacer space="4" />
+
+### Styling the blocks
+
+After styling the wrapper of our banner, this is the base that we have to work with:
+
+!["Gradient background without any overlaying blocks"](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586682729/lukebrown.io/banner-with-gradient.png)
+
+We now need to style the individual `<span>` elements that make up the effect. To do this we are going to use the `nth-child()` pseudo selector to avoid having to apply unnecessary class names.
+
+Let’s start by styling our first “block”, which occupies one column in the first row of our grid:
+
+```css
+#stripes span:nth-child(1) {
+  grid-column: span 1;
+  background: var(--first);
+}
+```
+
+By using the `grid-column` property we can dictate where this element sits within the grid. By default, the first element starts at column `1`  in the first row, so we simply have to specify how many columns this `<span>` should cover by using the `span` syntax.
+
+As this block should occupy `1` out of `6` of our grid columns, we can use the value `span 1`. You will also notice that we are referencing a CSS variable that we defined earlier.
+
+We now have our first block in the top left corner of our banner, but it is difficult to see without any companion blocks. So, let's style the second block, which should occupy `2` columns from its current position:
+
+```css
+#stripes span:nth-child(2) {
+  grid-column: span 2;
+  background: var(--second);
+}
+```
+
+We can now start to see our banner coming together:
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586692791/lukebrown.io/first-2-blocks.png" imageAlt="Banner with first 2 blocks styled" caption="Two blocks in place, although It doesn't look like much yet..." />
+
+The final block within the first row of our grid also occupies `2` columns, but has a different background color:
+
+```css
+#stripes span:nth-child(3) {
+  grid-column: span 2;
+  background: var(--third);
+}
+```
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586789863/lukebrown.io/third-block-stripe.png" caption="We have now styled all three blocks within the first grid row" />
+
+You may have noticed that there are no blocks in the second row of the grid. Therefore, we can specify that the fourth `<span>` sits within the third row by using the `grid-row` property.
+
+This block also sits within the last column of our grid:
+
+```css
+#stripes span:nth-child(4) {
+  grid-column: 6;
+  grid-row: 3;
+  background: var(--fourth);
+}
+```
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586694409/lukebrown.io/fourth-block-stripe.png" caption="Our fourth block lives in the last column of the third row" />
+
+Finally, we can add the fifth block to the first two columns of the 4th row:
+
+```css
+#stripes span:nth-child(5) {
+  grid-column: span 2;
+  grid-row: 4;
+  background: var(--fifth);
+}
+```
+
+<ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586694409/lukebrown.io/fifth-block-stripe.png" caption="The final block occupies 2 columns in the last row" />
+
+<Spacer space="4" />
+
+### "Skewing" the banner
+
+Now that we have our `5` `<span>` elements styled correctly, we need to apply a `transform` to position the banner at an angle.
+
+This can be achieved by applying a `skew` transform value to our wrapper element. To do this, simply return to your initial CSS for `#stripes` and add a `transform` and `transform-origin` as specified here:
+
+```css
+#stripes {
+  width: 100%;
+  height: 35vw;
+  background: var(--background);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  transform: skewY(-12deg);
+  transform-origin: 0;
+}
+```
+
+We are rotating our banner on the `Y` axis by `-12` degrees and specifying that the transform applies to the top left of our banner (remove the `transform-origin` to see the default behaviour!).
+
+![](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586694409/lukebrown.io/complete-stripe-banner.png)
+
+Ta-da! We now have a replica of the gradient banner used on Stripe's homepage built with CSS Grid.

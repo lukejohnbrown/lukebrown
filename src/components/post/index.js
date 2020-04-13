@@ -3,3 +3,4 @@ export { default as PostBody } from "./PostBody";
 export { default as Notice } from "./Notice";
 export { default as Spacer } from "./Spacer";
 export { default as Codepen } from "./Codepen";
+export { default as ImageWithCaption } from "./ImageWithCaption";
