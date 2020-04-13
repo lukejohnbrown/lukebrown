@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import './syntax.css';

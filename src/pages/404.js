@@ -6,7 +6,6 @@ import {
   Container,
   Seo,
   Title,
-  Button,
   Footer,
 } from "../components/shared"
 
