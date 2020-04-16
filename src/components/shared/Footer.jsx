@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Button from "./Button";
+import { YouTubeIcon, Button } from "./";
 
 const FooterWrapper = styled.footer`
   display: flex;
@@ -28,7 +28,11 @@ const FooterLinks = styled.div`
     transition: all 200ms;
 
     &:first-child {
-      margin-right: ${({ theme }) => theme.space[5]};
+      margin-right: ${({ theme }) => theme.space[3]};
+
+      @media(min-width: 350px) {
+        margin-right: ${({ theme }) => theme.space[5]};
+      }
     }
 
     &:hover,
@@ -36,6 +40,17 @@ const FooterLinks = styled.div`
       color: ${({ theme }) => theme.palette.text};
     }
   }
+`;
+
+const FooterBase = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const YouTubeLink = styled.a`
+  display: block;
 `;
 
 const Footer = ({ buttonText, buttonLink, isExternalLink = false, isNavButton = true, buttonIcon }) => {
@@ -46,10 +61,15 @@ const Footer = ({ buttonText, buttonLink, isExternalLink = false, isNavButton = 
           <Button isNavButton={isNavButton} isExternalLink={isExternalLink}  buttonIcon={buttonIcon} buttonLink={buttonLink} buttonText={buttonText} />
         </ButtonWrapper>
       )}
-      <FooterLinks>
-        <a href="mailto:hello@lukebrown.io" target="_blank"  rel="noopener noreferrer" >hello@lukebrown.io</a>
-        <a href="https://twitter.com/Lukejohnbrown" target="_blank"  rel="noopener noreferrer" >@lukejohnbrown</a>
-      </FooterLinks>
+      <FooterBase>
+        <FooterLinks>
+          <a href="mailto:hello@lukebrown.io" target="_blank"  rel="noopener noreferrer">hello@lukebrown.io</a>
+          <a href="https://twitter.com/Lukejohnbrown" target="_blank"  rel="noopener noreferrer">@lukejohnbrown</a>
+        </FooterLinks>
+        <YouTubeLink href="https://www.youtube.com/channel/UC9nclCC4VwpQdrUb2nE4mdg" target="_blank"  rel="noopener noreferrer">
+          <YouTubeIcon />
+        </YouTubeLink>
+      </FooterBase>
     </FooterWrapper>
   )
 }

@@ -2,9 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 
 const TwitterIconWrapper = styled.svg`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-
   path {
     fill: ${({ theme }) => theme.palette.contrastColor};
     border-color: ${({ theme }) => theme.palette.iconColor};

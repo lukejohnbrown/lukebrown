@@ -8,6 +8,7 @@ export { default as Title } from "./Title";
 export { default as DesignIcon } from "./DesignIcon";
 export { default as DevelopIcon } from "./DevelopIcon";
 export { default as WordpressIcon } from "./WordpressIcon";
+export { default as YouTubeIcon } from "./YouTubeIcon";
 export { default as SPAIcon } from "./SPAIcon";
 export { default as TwitterIcon } from "./TwitterIcon";
 export { default as Footer } from "./Footer";
