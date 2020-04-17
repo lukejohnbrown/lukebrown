@@ -1,6 +1,6 @@
 ---
 title: "Top Javascript Array Methods"
-subtitle: "As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilising these methods will give you super powers when working with arrays..."
+subtitle: "As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilizing these methods will give you super powers when working with arrays..."
 categories: "Javascript, Arrays"
 image: "https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586511621/lukebrown.io/array-methods-og.png"
 date: "2019-07-20"
@@ -8,7 +8,7 @@ date: "2019-07-20"
 
 import { Spacer, Notice } from "../components/post";
 
-As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilising these methods will give you super powers when working with arrays.
+As web developers, we have access to some extremely useful methods for working with arrays in Javascript, many of which didn't exist when I started learning. Knowing and utilizing these methods will give you super powers when working with arrays.
 
 <Spacer space="1" />
 
@@ -72,7 +72,7 @@ The `.map()` is extremely useful for a wide range of scenarios and is easily my 
 
 ### Array.filter()
 
-The `.filter()` method is used when you need to get items of an array **conditionally**. `Array.filter()` calls a function on each array item to test that the current item fits a criteria, only if the test returns a `truthy` value is the item included in the newly constructed array.
+The `.filter()` method is used when you need to get items of an array **conditionally**. `Array.filter()` calls a function on each array item to test that the current item fits the criteria, only if the test returns a `truthy` value is the item included in the newly constructed array.
 The `.filter()` method always returns a new array, if none of the array items pass the test an empty array is returned.
 
 Let’s look at an example...
@@ -186,7 +186,7 @@ return acc;
  }
 ```
 
-As you can (hopefully) see, once you get familar with `.reduce()` it can be a very powerful tool in your JavaScript toolbox.
+As you can (hopefully) see, once you get familiar with `.reduce()` it can be a very powerful tool in your JavaScript toolbox.
 
 <Notice title="When should you use the Array.reduce() method?" text="When you want to convert an array down to a single value by manipulating its items" />
 
@@ -258,7 +258,7 @@ const oldDog = dogs.find(dog => dog.age >= 10);
 
 It may not surprise you that the `.every()` method checks if **every** element in the array passes a test. If each element of the array passes the test, `.every()` will return `true`, if the method reaches **any** element that does not pass the test, it returns `false`.
 
-Here we have an array of people objects, let's use the `.every()` method to check that all the people in the array are over the age of 18....
+Here we have an array of people objects, let's use the `.every()` method to check that all the people in the array are over the age of 18...
 
 ```js
 const people = [

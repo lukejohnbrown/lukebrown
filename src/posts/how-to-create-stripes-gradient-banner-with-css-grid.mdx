@@ -14,7 +14,7 @@ Stripe’s website is often used as an example of excellent web design, and you 
 
 <ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586680889/lukebrown.io/stripe-banner.png" imageAlt="Screenshot of Stripe's homepage" caption="Banner from the homepage of stripe.com" />
 
-Although hopefully it goes without saying, the design and colors used within this post are all borrowed and inspried by <a href="https://stripe.com">stripe.com</a>.
+Although (hopefully) it goes without saying, the design and colors used within this post are all borrowed and inspired by <a href="https://stripe.com">stripe.com</a>.
 
 <Spacer space="4" />
 
@@ -24,19 +24,19 @@ The first thing you notice about the banner is that it is presented at an angle.
 
 ![Stripe's banner without transform: skew()](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586683175/lukebrown.io/stripe-banner-straight.png)
 
-Initially I assumed that this style was achieved by using a background image, but it turns out it is simply a collection of five `<span>` elements wrapped in a `<div>`.
+Initially, I assumed that this style was achieved by using a background image, but it turns out it is simply a collection of five `<span>` elements wrapped in a `<div>`.
 
 Each `<span>` has a different background color and position to make up this neat gradient effect, which you can see demonstrated here:
 
 ![](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586683860/lukebrown.io/banner-spans-outlined.png)
 
-Although Stripe uses absolute positioning to here (which is likely for better browser support), this is actually pretty straight forward to achieve with CSS Grid.
+Although Stripe uses absolute positioning to here (which is likely for better browser support), this is pretty straight forward to achieve with CSS Grid.
 
 <Spacer space="4" />
 
 ## The Solution with CSS Grid
 
-When building with CSS grid, it helps to visualise the layout as a grid (which sounds obvious when you say it out loud). As you can see, the Stripe banner is a grid made up of `6` columns and `4` rows:
+When building with CSS Grid, it helps to visualize the layout as a grid (which sounds obvious when you say it out loud). As you can see, the Stripe banner is a grid made up of `6` columns and `4` rows:
 
 <ImageWithCaption imageUrl="https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586692130/lukebrown.io/stripe-banner-grid-min.png" imageAlt="The Stripe banner with a grid overlay" caption="The Stripe banner can be visualised with a 6 x 4 grid" />
 
@@ -171,7 +171,7 @@ This can be achieved by applying a `skew` transform value to our wrapper element
 }
 ```
 
-We are rotating our banner on the `Y` axis by `-12` degrees and specifying that the transform applies to the top left of our banner (remove the `transform-origin` to see the default behaviour!).
+We are rotating our banner on the `Y` axis by `-12` degrees and specifying that the transform applies to the top left of our banner (remove the `transform-origin` to see the default behavior!).
 
 ![](https://res.cloudinary.com/dm0jn7d2r/image/upload/v1586694409/lukebrown.io/complete-stripe-banner.png)
 
