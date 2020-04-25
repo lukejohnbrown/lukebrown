@@ -1,12 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react"
+import styled from "styled-components"
 
 const SpacerWrapper = styled.span`
-    display: block;
-    height: ${({ space, theme }) => theme.space[space]};
-`;
+  display: block;
+  height: ${({ space, theme }) => theme.space[space]};
+`
 
+const Spacer = ({ space = 6 }) => <SpacerWrapper space={space} />
 
-const Spacer = ({ space = 6 }) => <SpacerWrapper space={space} />;
-
-export default Spacer;
+export default Spacer

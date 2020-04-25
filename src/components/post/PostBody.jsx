@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
-import CodeBlock from './CodeBlock';
+import React from "react"
+import styled from "styled-components"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import CodeBlock from "./CodeBlock"
 
 const SPostBody = styled.article`
   h1 {
@@ -23,7 +23,10 @@ const SPostBody = styled.article`
     font-weight: ${({ theme }) => theme.fontWeight[2]};
   }
 
-  p + h3, p + h2, img + h3, img + h2 {
+  p + h3,
+  p + h2,
+  img + h3,
+  img + h2 {
     margin-top: ${({ theme }) => theme.space[4]};
   }
 
@@ -31,19 +34,20 @@ const SPostBody = styled.article`
     margin-bottom: ${({ theme }) => theme.space[4]};
 
     code {
-      font-family: 'Source Code Pro', monospace;
+      font-family: ${({ theme }) => theme.codeFontFamily};
       background: #eee;
       margin: 0 2px;
       padding: 1px 3px;
+      letter-spacing: 0px;
     }
   }
 
   a {
     color: ${({ theme }) => theme.palette.blue};
-
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: ${({ theme }) => theme.space[4]};
     list-style: none;
 
@@ -51,13 +55,23 @@ const SPostBody = styled.article`
       &:not(:last-child) {
         margin-bottom: ${({ theme }) => theme.space[2]};
       }
+
+      code {
+        font-family: ${({ theme }) => theme.codeFontFamily};
+        background: #eee;
+        margin: 0 2px;
+        padding: 1px 3px;
+        letter-spacing: 0px;
+      }
     }
 
-    ul, ol {
+    ul,
+    ol {
       padding-left: 20px;
       margin-top: ${({ theme }) => theme.space[1]};
 
-      ul, ol {
+      ul,
+      ol {
         padding-left: 25px;
       }
     }
@@ -68,7 +82,7 @@ const SPostBody = styled.article`
     padding-left: ${({ theme }) => theme.space[4]};
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 8px;
       left: 2px;
@@ -86,12 +100,12 @@ const SPostBody = styled.article`
     padding-left: ${({ theme }) => theme.space[4]};
 
     &::before {
-      content: counter(step-counter) ;
+      content: counter(step-counter);
       position: absolute;
       top: 0;
       left: 0;
       color: ${({ theme }) => theme.palette.blue};
-      font-weight:600;
+      font-weight: 600;
     }
   }
 
@@ -109,7 +123,7 @@ const SPostBody = styled.article`
   .prism-code {
     margin-bottom: ${({ theme }) => theme.space[4]};
   }
-`;
+`
 
 const PostBody = ({ content }) => (
   <SPostBody>
@@ -117,6 +131,6 @@ const PostBody = ({ content }) => (
       <MDXRenderer>{content}</MDXRenderer>
     </MDXProvider>
   </SPostBody>
-);
+)
 
-export default PostBody;
+export default PostBody

@@ -1,9 +1,8 @@
+import React from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
 
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
-
-import { Layout, Seo, Container, Title, Footer } from "../components/shared";
+import { Layout, Seo, Container, Title, Footer } from "../components/shared"
 
 const PostLink = styled(Link)`
   text-decoration: none;
@@ -30,22 +29,33 @@ const PostLink = styled(Link)`
     color: ${({ theme }) => theme.palette.darkGrey};
     transition: all 200ms;
   }
-`;
+`
 
-const WritingPage = ({ data: { allMdx: { edges } } }) => (
+const WritingPage = ({
+  data: {
+    allMdx: { edges },
+  },
+}) => (
   <Layout>
-    <Seo title="Latest Blog Posts" description="When I learn something new, I like to “make it stick” by writing about it here, on this blog." />
+    <Seo
+      title="Latest Blog Posts"
+      description="When I learn something new, I like to “make it stick” by writing about it here, on this blog."
+    />
     <Container>
       <Title>Latest blog posts</Title>
 
       {edges
-        .sort((a, b) => new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date))
-        .map(({ node: { id, fields, frontmatter }}) => (
+        .sort(
+          (a, b) =>
+            new Date(b.node.frontmatter.date) -
+            new Date(a.node.frontmatter.date)
+        )
+        .map(({ node: { id, fields, frontmatter } }) => (
           <PostLink to={fields.slug} key={id}>
             <h2>{frontmatter.title}</h2>
             <p>{frontmatter.subtitle}</p>
           </PostLink>
-      ))}
+        ))}
 
       <Footer buttonText="Fancy a chat?" buttonLink="/contact" />
     </Container>
@@ -53,22 +63,22 @@ const WritingPage = ({ data: { allMdx: { edges } } }) => (
 )
 
 export const pageQuery = graphql`
-    query getAllPostsForArchive {
-      allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              subtitle
-              date
-            }
+  query getAllPostsForArchive {
+    allMdx {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            subtitle
+            date
           }
         }
       }
     }
-`;
+  }
+`
 
-export default WritingPage;
+export default WritingPage

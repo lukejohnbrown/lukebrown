@@ -1,6 +1,5 @@
-import React from 'react'
-import styled from "styled-components";
-
+import React from "react"
+import styled from "styled-components"
 
 const ContainerWrapper = styled.div`
   width: 100%;
@@ -8,21 +7,17 @@ const ContainerWrapper = styled.div`
   max-width: 500px;
   margin: 0 auto;
 
-  @media(min-width: 360px) {
+  @media (min-width: 360px) {
     padding: 0 ${({ theme }) => theme.space[5]};
   }
 
-  @media(min-width: 560px) {
+  @media (min-width: 560px) {
     padding: 0;
   }
-`;
+`
 
-const Container = ({ children }) => {
-  return (
-    <ContainerWrapper>
-      {children}
-    </ContainerWrapper>
-  )
-}
+const Container = ({ children }) => (
+  <ContainerWrapper>{children}</ContainerWrapper>
+)
 
-export default Container;
+export default Container

@@ -1,6 +1,4 @@
-import {
-  createGlobalStyle
-} from "styled-components";
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -120,7 +118,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
 
     @media ${({ theme }) => theme.breakpoints.up.sm} {
-      line-height: 1.6;
+      line-height: 1.4;
     }
   }
 
@@ -144,14 +142,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @keyframes wave {
-   0% { transform: rotate(  0.0deg) }
-   10% { transform: rotate(10.0deg) }
-   20% { transform: rotate( -12.0deg) }
-   30% { transform: rotate(10.0deg) }
-   40% { transform: rotate(  -9.0deg) }
-   50% { transform: rotate(  0.0deg) }
-    100% { transform: rotate(  0.0deg) }
+    0% { transform: rotate(0.0deg) }
+    10% { transform: rotate(10.0deg) }
+    20% { transform: rotate(-12.0deg) }
+    30% { transform: rotate(10.0deg) }
+    40% { transform: rotate(-9.0deg) }
+    50% { transform: rotate(0.0deg) }
+    100% { transform: rotate(0.0deg) }
   }
 `
 
-export default GlobalStyle;
+export default GlobalStyle

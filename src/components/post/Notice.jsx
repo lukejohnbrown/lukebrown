@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const NoticeWrapper = styled.div`
   background: ${({ theme }) => theme.palette.yellow};
@@ -14,19 +14,13 @@ const NoticeWrapper = styled.div`
   p {
     margin: 0;
   }
-`;
+`
 
-const Notice = ({ title, text }) => {
-  return (
-    <NoticeWrapper>
-      {title && (
-        <h3>{title}</h3>
-      )}
-      {text && (
-        <p>{text}</p>
-      )}
-    </NoticeWrapper>
-  )
-}
+const Notice = ({ title, text }) => (
+  <NoticeWrapper>
+    {title && <h3>{title}</h3>}
+    {text && <p dangerouslySetInnerHTML={{ __html: text }} />}
+  </NoticeWrapper>
+)
 
-export default Notice;
+export default Notice

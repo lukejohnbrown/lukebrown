@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const TitleWrapper = styled.h1`
   font-size: ${({ theme }) => theme.fontSize[600]};
@@ -12,17 +12,11 @@ const TitleWrapper = styled.h1`
   @media ${({ theme }) => theme.breakpoints.up.md} {
     line-height: 1.2;
     font-size: ${({ theme }) => theme.fontSize[600]};
-    margin: ${({ theme }) => theme.space[7]} 0 ${({ theme }) => theme.space[4]} 0;
-  };
-`;
+    margin: ${({ theme }) => theme.space[7]} 0 ${({ theme }) => theme.space[4]}
+      0;
+  }
+`
 
+const Title = ({ children }) => <TitleWrapper>{children}</TitleWrapper>
 
-const Title = ({ children }) => {
-  return (
-    <TitleWrapper>
-      {children}
-    </TitleWrapper>
-  )
-}
-
-export default Title;
+export default Title

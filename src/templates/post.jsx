@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 import {
   Layout,
@@ -6,40 +6,49 @@ import {
   Seo,
   Title,
   Footer,
-  TwitterIcon
+  TwitterIcon,
 } from "../components/shared"
 
-import {
-  PostBody
-} from "../components/post"
+import { PostBody } from "../components/post"
 
-const PostTemplate = ({ location: { href }, data: { mdx: { frontmatter, body, subtitle, timeToRead } } }) => {
-
-return (
+const PostTemplate = ({
+  location: { href },
+  data: {
+    mdx: { frontmatter, body, subtitle, timeToRead },
+  },
+}) => (
   <Layout>
     <Container>
-      <Seo description={frontmatter.subtitle} title={frontmatter.title} image={frontmatter.image} />
+      <Seo
+        description={frontmatter.subtitle}
+        title={frontmatter.title}
+        image={frontmatter.image}
+      />
       <Title>{frontmatter.title}</Title>
       <PostBody content={body} />
-      <Footer buttonIcon={<TwitterIcon />} isExternalLink buttonLink={`https://twitter.com/share?url=http://${href}`} buttonText="Share this post on Twitter" />
+      <Footer
+        buttonIcon={<TwitterIcon />}
+        isExternalLink
+        buttonLink={`https://twitter.com/share?url=http://${href}`}
+        buttonText="Share this post on Twitter"
+      />
     </Container>
   </Layout>
 )
-}
 export const pageQuery = graphql`
-    query PostQuery($id: String) {
-        mdx(id: { eq: $id }) {
-            id
-            frontmatter {
-                title,
-                subtitle,
-                categories,
-                date,
-                image
-            }
-            body
-        }
+  query PostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      frontmatter {
+        title
+        subtitle
+        categories
+        date
+        image
+      }
+      body
     }
-`;
+  }
+`
 
 export default PostTemplate
