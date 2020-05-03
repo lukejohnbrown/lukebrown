@@ -1,0 +1,85 @@
+---
+title: "What is optional chaining in JavaScript?"
+subtitle: "Optional chaining will soon be coming to JavaScript (at the time of writing it is in stage 4). Let's take a quick look at what optional chaining is and why you should be excited about it."
+categories: "Javascript, ES2020"
+image: "https://res.cloudinary.com/dm0jn7d2r/image/upload/v1588497838/lukebrown.io/og-optional-chaining.png"
+date: "2020-04-27"
+---
+
+import { Spacer, Notice } from "../components/post";
+
+Optional chaining will soon be coming to JavaScript (at the time of writing it is in stage 4 🎉). Let's take a quick look at what optional chaining is and why you should be excited about it.
+
+Put simply...
+
+<Notice text="Optional chaining is a way of accessing nested object values without first having to validate that they exist." />
+
+
+As you can see in the following examples, the syntax introduced by optional usually results in a shorter, simpler expression when reading nested object values.
+
+
+<Spacer space="4"/>
+
+### Using optional chaining in JavaScript
+
+In this example, we have a `house` object that contains properties that would be associated with a house:
+
+
+```js
+const house = {
+  bedrooms: 3,
+  bathrooms: 2,
+  parking: true,
+  swimmingPool: {
+    width: 10,
+    length: 20,
+    depth: 5.5
+  }
+};
+```
+
+Let's say we want to access the value of `width` from the `swimmingPool` object of `house`.
+
+Because you are a considerate programmer, you would likely check that the `swimmingPool` property exists on `house` and the `width` property exists on `swimmingPool` before accessing the value of `width`.
+
+Without optional chaining, you might write something like this:
+
+```js
+// Without optional chaining
+const poolWidth = house.swimmingPool && house.swimmingPool.width;
+```
+
+But with optional chaining, we can simplify this expression by writing:
+
+```js
+// With optional chaining
+const poolWidth = house?.swimmingPool?.width;
+```
+
+As you can see, the `?` allows us to read an object value without having to validate its existence first.
+
+If we were to use the `?` operator to access an object value that does not exist, the `?` expression will return `undefined`. Whereas using the standard `.` operator would throw an error:
+
+```js
+const apartment = {
+  bedrooms: 1,
+  bathrooms: 1,
+  parking: true,
+};
+```
+
+This would throw an error as swimmingPool does not exist 👎...
+```js
+// throws error ↓
+const const poolWidth = apartment.swimmingPool.width; // Error!
+```
+
+This would short-circuit and return `undefined` 👍...
+```js
+// undefined ↓
+const const poolWidth = apartment?.swimmingPool?.width;
+```
+
+Pretty neat, huh?
+
+At the time of writing, optional chaining has not yet made it into the core of the language (although it will likely be included in ES2020!). Therefore, using optional chaining in your codebase at this time will require a build process for transpiling or polyfilling.

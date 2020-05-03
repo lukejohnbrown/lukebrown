@@ -1,20 +1,36 @@
 import React from "react"
+import styled from "styled-components"
 
 import {
   Layout,
   Container,
   Seo,
-  Title,
   Footer,
   TwitterIcon,
 } from "../components/shared"
 
 import { PostBody } from "../components/post"
 
+const PostTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize[600]};
+  font-weight: ${({ theme }) => theme.fontWeight[2]};
+  margin: ${({ theme }) => theme.space[6]} 0 ${({ theme }) => theme.space[5]} 0;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+
+  @media ${({ theme }) => theme.breakpoints.up.md} {
+    line-height: 1.2;
+    font-size: ${({ theme }) => theme.fontSize[500]};
+    margin: ${({ theme }) => theme.space[7]} 0 ${({ theme }) => theme.space[4]}
+      0;
+  }
+`
+
 const PostTemplate = ({
   location: { href },
   data: {
-    mdx: { frontmatter, body, subtitle, timeToRead },
+    mdx: { frontmatter, body },
   },
 }) => (
   <Layout>
@@ -24,7 +40,7 @@ const PostTemplate = ({
         title={frontmatter.title}
         image={frontmatter.image}
       />
-      <Title>{frontmatter.title}</Title>
+      <PostTitle>{frontmatter.title}</PostTitle>
       <PostBody content={body} />
       <Footer
         buttonIcon={<TwitterIcon />}
