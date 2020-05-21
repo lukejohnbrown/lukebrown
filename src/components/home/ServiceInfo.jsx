@@ -34,6 +34,7 @@ const TitleWrapper = styled.h3`
 
 const Content = styled.p`
   margin-top: ${({ theme }) => theme.space[3]};
+  line-height: 1.6;
 `
 
 const ServiceInfo = ({ icon, title, children }) => (
