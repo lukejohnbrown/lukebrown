@@ -7,21 +7,21 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-netlify',
-    'gatsby-plugin-styled-components',
+    "gatsby-plugin-netlify",
+    "gatsby-plugin-styled-components",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1200,
-              disableBgImage: true
+              disableBgImage: true,
             },
           },
         ],
@@ -35,9 +35,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'posts',
+        name: "posts",
         path: `${__dirname}/src/posts`,
       },
     },
@@ -55,28 +55,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: "gatsby-plugin-fathom",
       options: {
-        fonts: [
-          {
-            family: `Heebo`,
-            variants: [`400`, `500`, `600`, `800`],
-          },
-          {
-            family: 'Source Code Pro',
-            variants: ['400']
-          }
-        ],
+        siteId: "PGRDHUXM",
+        whitelistHostnames: ["lukebrown.io"],
       },
     },
-    {
-      resolve: 'gatsby-plugin-fathom',
-      options: {
-        siteId: 'PGRDHUXM',
-        whitelistHostnames: [
-          'lukebrown.io'
-        ]
-      }
-    }
   ],
 }
