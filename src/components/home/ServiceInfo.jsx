@@ -14,7 +14,7 @@ const ServiceInfoWrapper = styled.div`
 
   @media ${({ theme }) => theme.breakpoints.up.md} {
     padding: ${({ theme }) => theme.space[4]};
-    margin: 0 -${({ theme }) => theme.space[4]};
+    margin: 0 -${({ theme }) => theme.space[3]};
   }
 `
 

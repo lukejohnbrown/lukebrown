@@ -56,10 +56,6 @@ const IndexPage = () => (
         <strong>However, it doesn't have to be this way!</strong> I specialise
         in building online experiences that are a joy for your customers to use
         without compromising on style.
-        <br />
-        <br />
-        <br />I am sorry for the <strike>slightly</strike> very cheesy sales
-        pitch, but there is no simpler way of putting it.
       </IntroText>
 
       <Services>
