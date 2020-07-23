@@ -102,7 +102,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    font-size: 14px;
+    font-size: 15px;
     color: ${({ theme }) => theme.palette.text};;
     background: ${({ theme }) => theme.palette.bodyBackground};
 

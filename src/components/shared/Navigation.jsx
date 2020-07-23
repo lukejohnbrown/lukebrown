@@ -12,7 +12,7 @@ const NavigationItem = styled.li`
   font-weight: ${({ theme }) => theme.fontWeight[1]};
 
   &:not(:last-child) {
-    padding-right: ${({ theme }) => theme.space[6]};
+    padding-right: ${({ theme }) => theme.space[5]};
 
     @media ${({ theme }) => theme.breakpoints.up.sm} {
       padding-right: ${({ theme }) => theme.space[7]};

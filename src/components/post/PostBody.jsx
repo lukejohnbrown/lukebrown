@@ -40,6 +40,10 @@ const SPostBody = styled.article`
       padding: 1px 3px;
       letter-spacing: 0px;
     }
+
+    em {
+      font-style: italic;
+    }
   }
 
   a {
