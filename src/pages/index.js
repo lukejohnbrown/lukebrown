@@ -53,7 +53,7 @@ const IndexPage = () => (
         experience.
         <br />
         <br />
-        <strong>However, it doesn't have to be this way!</strong> I specialise
+        <strong>However, it does not have to be this way!</strong> I specialise
         in building online experiences that are a joy for your customers to use
         without compromising on style.
       </IntroText>
@@ -74,12 +74,11 @@ const IndexPage = () => (
 
         <ServiceInfo title="Website Development" icon={<DevelopIcon />}>
           I take a huge amount of pride in building high quality online
-          experiences that yout customers enjoy using and you enjoy
-          managing.There is a lot of potential to succeed online, but if you
-          start off on the wrong foot it can quickly become an uphill
-          battle.This is exactly why I work closely with businesses and
-          individuals to ensure that we take the right techincal approach from
-          day one.
+          experiences that your customers enjoy using and you enjoy managing.
+          There is a lot of potential to succeed online, but if you start off on
+          the wrong foot it can quickly become an uphill battle.This is exactly
+          why I work closely with businesses and individuals to ensure that we
+          take the right technical approach from day one.
         </ServiceInfo>
 
         <Footer buttonText="Want to see some of my work?" buttonLink="/work" />

@@ -105,10 +105,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 15px;
     color: ${({ theme }) => theme.palette.text};;
     background: ${({ theme }) => theme.palette.bodyBackground};
-
-    @media ${({ theme }) => theme.breakpoints.up.sm} {
-      font-size:15px;
-    }
   }
 
   h1, h2, h3, h4, h5, h6, p, button {
