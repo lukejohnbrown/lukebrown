@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import ReactBodymovin from "react-bodymovin"
+import Lottie from "react-lottie"
 
 const ServiceInfoWrapper = styled.div``
 
@@ -20,20 +20,15 @@ const Content = styled.p`
   margin-top: ${({ theme }) => theme.space[3]};
   line-height: 2;
 `
-
-const bodymovinOptions = {
-  loop: true,
-  autoplay: true,
-  prerender: true,
-}
-
 const ServiceInfo = ({ icon, title, children }) => (
   <ServiceInfoWrapper>
     <TitleWrapper>
       <IconWrapper>
-        <ReactBodymovin
+        <Lottie
           options={{
-            ...bodymovinOptions,
+            loop: true,
+            autoplay: true,
+            prerender: true,
             animationData: icon,
           }}
         />

@@ -34,10 +34,10 @@
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-bodymovin": "^2.0.0",
     "react-codepen-embed": "^1.0.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-lottie": "^1.2.3",
     "react-spring": "^8.0.27",
     "sanitizer": "^0.1.3",
     "styled-components": "^5.0.0"
@@ -112,7 +112,6 @@
       ],
       "react/jsx-wrap-multilines": "off",
       "react/jsx-one-expression-per-line": "off",
-      "react/jsx-filename-extension": "off",
       "arrow-body-style": [
         "error",
         "as-needed"
