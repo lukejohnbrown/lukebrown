@@ -20,8 +20,8 @@ const IntroText = styled.p`
 
 const Services = styled.div`
   background: #f6f6f6;
-  padding: ${({ theme }) => theme.space[7]} 0;
-  margin-top: ${({ theme }) => theme.space[7]};
+  padding: ${({ theme }) => theme.space[6]} 0;
+  margin-top: ${({ theme }) => theme.space[6]};
 
   @media ${({ theme }) => theme.breakpoints.up.md} {
     margin-top: ${({ theme }) => theme.space[7]};
