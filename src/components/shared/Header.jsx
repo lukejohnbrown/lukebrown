@@ -13,12 +13,14 @@ const HeaderWrapper = styled.header`
 
 const Logo = styled.img`
   width: 43px;
+  display: block;
+
   @media (min-width: 365px) {
-    width: 45px;
+    width: 50px;
   }
 
   @media ${({ theme }) => theme.breakpoints.up.sm} {
-    width: 50px;
+    width: 52px;
   }
 `
 
