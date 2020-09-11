@@ -1,46 +1,43 @@
 import React from "react"
 import styled from "styled-components"
+import ReactBodymovin from "react-bodymovin"
 
-const ServiceInfoWrapper = styled.div`
-  background: ${({ theme }) => theme.palette.panelBackground};
-  padding: ${({ theme }) => theme.space[4]};
-  margin: 0 -${({ theme }) => theme.space[4]};
-  border: 2px solid ${({ theme }) => theme.palette.panelBorder};
-
-  @media (min-width: 360px) {
-    padding: ${({ theme }) => theme.space[4]} ${({ theme }) => theme.space[5]};
-    margin: 0 -${({ theme }) => theme.space[5]};
-  }
-
-  @media ${({ theme }) => theme.breakpoints.up.md} {
-    padding: ${({ theme }) => theme.space[4]};
-    margin: 0 -${({ theme }) => theme.space[3]};
-  }
-`
+const ServiceInfoWrapper = styled.div``
 
 const TitleWrapper = styled.h3`
   display: flex;
   align-items: center;
-  font-weight: ${({ theme }) => theme.fontWeight[1]};
+  font-weight: ${({ theme }) => theme.fontWeight[2]};
+  margin-bottom: ${({ theme }) => theme.space[2]};
+`
 
-  svg {
-    margin-right: ${({ theme }) => theme.space[2]};
-    @media ${({ theme }) => theme.breakpoints.up.md} {
-      margin-right: ${({ theme }) => theme.space[3]};
-      transform: translateY(-1px);
-    }
-  }
+const IconWrapper = styled.div`
+  width: 40px;
+  margin-right: ${({ theme }) => theme.space[3]};
 `
 
 const Content = styled.p`
   margin-top: ${({ theme }) => theme.space[3]};
-  line-height: 1.6;
+  line-height: 2;
 `
+
+const bodymovinOptions = {
+  loop: true,
+  autoplay: true,
+  prerender: true,
+}
 
 const ServiceInfo = ({ icon, title, children }) => (
   <ServiceInfoWrapper>
     <TitleWrapper>
-      {icon}
+      <IconWrapper>
+        <ReactBodymovin
+          options={{
+            ...bodymovinOptions,
+            animationData: icon,
+          }}
+        />
+      </IconWrapper>
       {title}
     </TitleWrapper>
 

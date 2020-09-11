@@ -87,7 +87,7 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     font-size: 100%;
     font: inherit;
-    font-family: 'Heebo', 'Helvetica', sans-serif;
+    font-family: 'Noto Sans JP', 'Helvetica', sans-serif;
     vertical-align: baseline;
   }
 
@@ -102,7 +102,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    font-size: 15px;
+    font-size: 16px;
     color: ${({ theme }) => theme.palette.text};;
     background: ${({ theme }) => theme.palette.bodyBackground};
   }
@@ -110,30 +110,24 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6, p, button {
     font-size: 1rem;
     color: ${({ theme }) => theme.palette.text};;
-    letter-spacing: -0.01em;
-    line-height: 1.5;
-
-    @media ${({ theme }) => theme.breakpoints.up.sm} {
-      line-height: 1.4;
-    }
+    line-height: 1.7;
   }
 
   a {
     font-size: 1rem;
     color: ${({ theme }) => theme.palette.text};;
-    letter-spacing: -0.01em;
   }
 
   button {
     font-size: 1rem;
     border: none;
     background: none;
-    font-family: 'Heebo', 'Helvetica', sans-serif;
+    font-family: 'Noto Sans JP', 'Helvetica', sans-serif;
   }
 
   input,
   textarea {
-    font-family: 'Heebo', 'Helvetica', sans-serif;
+    font-family: 'Noto Sans JP', 'Helvetica', sans-serif;
     font-size: 1rem;
   }
 

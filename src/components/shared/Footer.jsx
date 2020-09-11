@@ -7,7 +7,11 @@ const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: ${({ theme }) => theme.space[7]};
+  margin-top: ${({ theme }) => theme.space[6]};
+
+  @media ${({ theme }) => theme.breakpoints.up.md} {
+    margin-top: ${({ theme }) => theme.space[7]};
+  }
 `
 
 const ButtonWrapper = styled.div`

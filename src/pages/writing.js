@@ -16,7 +16,7 @@ const PostLink = styled(Link)`
   }
 
   &:not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.space[5]};
+    margin-bottom: ${({ theme }) => theme.space[6]};
   }
 
   h2 {
@@ -29,6 +29,10 @@ const PostLink = styled(Link)`
     color: ${({ theme }) => theme.palette.darkGrey};
     transition: all 200ms;
   }
+`
+
+const PostsWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.space[6]};
 `
 
 const WritingPage = ({
@@ -44,18 +48,20 @@ const WritingPage = ({
     <Container>
       <Title>Latest blog posts</Title>
 
-      {edges
-        .sort(
-          (a, b) =>
-            new Date(b.node.frontmatter.date) -
-            new Date(a.node.frontmatter.date)
-        )
-        .map(({ node: { id, fields, frontmatter } }) => (
-          <PostLink to={fields.slug} key={id}>
-            <h2>{frontmatter.title}</h2>
-            <p>{frontmatter.subtitle}</p>
-          </PostLink>
-        ))}
+      <PostsWrapper>
+        {edges
+          .sort(
+            (a, b) =>
+              new Date(b.node.frontmatter.date) -
+              new Date(a.node.frontmatter.date)
+          )
+          .map(({ node: { id, fields, frontmatter } }) => (
+            <PostLink to={fields.slug} key={id}>
+              <h2>{frontmatter.title}</h2>
+              <p>{frontmatter.subtitle}</p>
+            </PostLink>
+          ))}
+      </PostsWrapper>
 
       <Footer buttonText="Fancy a chat?" buttonLink="/contact" />
     </Container>

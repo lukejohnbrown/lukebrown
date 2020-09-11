@@ -12,15 +12,12 @@ import {
 } from "../components/shared"
 
 const ContactForm = styled.form`
-  margin-top: ${({ theme }) => theme.space[5]};
-  @media ${({ theme }) => theme.breakpoints.up.md} {
-    margin-top: ${({ theme }) => theme.space[6]};
-  }
+  margin-top: ${({ theme }) => theme.space[6]};
 `
 
 const FormField = styled.div`
   &:not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.space[5]};
+    margin-bottom: ${({ theme }) => theme.space[6]};
   }
 
   label {
@@ -50,13 +47,19 @@ const FormField = styled.div`
     appearance: none;
 
     &:focus {
-      border-color: ${({ theme }) => theme.palette.yellow};
+      border-color: ${({ theme }) => theme.palette.pink};
     }
   }
 
   textarea {
     min-height: 165px;
   }
+`
+
+const Subtitle = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize[200]};
+  font-weight: ${({ theme }) => theme.fontWeight[0]};
+  line-height: 1.8;
 `
 
 const StatusMessage = styled.p`
@@ -133,10 +136,10 @@ const ContactPage = () => {
       />
       <Container>
         <Title>Want to discuss a project?</Title>
-        <p>
+        <Subtitle>
           Want to discuss a project you have in mind? I would love to hear from
-          you! It all starts with a commitment free chat over a cup of tea...
-        </p>
+          you! It all starts with a chat over a cup of coffee...
+        </Subtitle>
 
         <ContactForm method="POST" onSubmit={handleSubmit}>
           <FormField>
