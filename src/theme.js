@@ -6,12 +6,13 @@ const palette = darkMode => ({
   panelBackground: darkMode ? "#262626" : "#F5F5F5",
   panelBorder: darkMode ? "#2d2d2d" : "#ececec",
   inputBorder: darkMode ? "#666666" : "#E9E9E9",
-  iconColor: darkMode ? "#F5DE19" : "#3D348B",
+  iconColor: darkMode ? "#CC3363" : "#CC3363",
   black: "#2F2F2F",
   grey: "#F5F5F5",
   mediumGrey: "#ececec",
   darkGrey: "#7C7C7C",
-  yellow: "#F5DE19",
+  yellow: "#666666",
+  pink: "#CC3363",
   blue: "#3D348B",
   error: "#c62828",
   success: "#9ccc65",
@@ -64,7 +65,7 @@ const fontSize = {
   900: "3.6rem",
 }
 
-const fontWeight = ["400", "500", "600", "800"]
+const fontWeight = ["400", "500", "700", "900"]
 
 const codeFontFamily = "Source Code Pro, monospace"
 

@@ -47,7 +47,7 @@ const SPostBody = styled.article`
   }
 
   a {
-    color: ${({ theme }) => theme.palette.blue};
+    color: ${({ theme }) => theme.palette.pink};
   }
 
   ul,
@@ -90,7 +90,7 @@ const SPostBody = styled.article`
       position: absolute;
       top: 8px;
       left: 2px;
-      background: ${({ theme }) => theme.palette.blue};
+      background: ${({ theme }) => theme.palette.text};
       width: 6px;
       height: 6px;
       font-weight: 600;
@@ -108,7 +108,7 @@ const SPostBody = styled.article`
       position: absolute;
       top: 0;
       left: 0;
-      color: ${({ theme }) => theme.palette.blue};
+      color: ${({ theme }) => theme.palette.text};
       font-weight: 600;
     }
   }

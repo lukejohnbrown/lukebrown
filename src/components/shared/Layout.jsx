@@ -3,7 +3,7 @@ import { Transition } from "react-spring/renderprops"
 import styled, { ThemeProvider } from "styled-components"
 import { GlobalStyle, Header } from "."
 
-import theme from "../../theme"
+import globalTheme from "../../theme"
 
 const LayoutWrapper = styled.div`
   padding: ${({ theme }) => theme.space[4]} 0;
@@ -18,7 +18,7 @@ const LayoutWrapper = styled.div`
 `
 
 const Layout = ({ children }) => (
-  <ThemeProvider theme={theme(false)}>
+  <ThemeProvider theme={globalTheme(false)}>
     <GlobalStyle />
 
     <LayoutWrapper>

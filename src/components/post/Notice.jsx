@@ -2,9 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 const NoticeWrapper = styled.div`
-  background: ${({ theme }) => theme.palette.yellow};
+  background: #2b2b2b;
   padding: ${({ theme }) => theme.space[3]};
-  border: 3px solid black;
   margin-bottom: ${({ theme }) => theme.space[4]};
 
   h3 {
@@ -13,6 +12,7 @@ const NoticeWrapper = styled.div`
 
   p {
     margin: 0;
+    color: white;
   }
 `
 

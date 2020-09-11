@@ -8,7 +8,7 @@ const Figure = styled.figure`
 
   figcaption {
     padding: ${({ theme }) => theme.space[2]};
-    border-top: 1px solid ${({ theme }) => theme.palette.yellow};
+    border-top: 1px solid ${({ theme }) => theme.palette.pink};
     background: ${({ theme }) => theme.palette.grey};
     font-size: ${({ theme }) => theme.fontSize[-100]};
     line-height: 1.3;

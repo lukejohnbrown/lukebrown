@@ -4,6 +4,12 @@ import styled from "styled-components"
 import { Layout, Seo, Container, Title, Footer } from "../components/shared"
 import { PortfolioItem } from "../components/work"
 
+const Subtitle = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize[200]};
+  font-weight: ${({ theme }) => theme.fontWeight[0]};
+  line-height: 1.8;
+`
+
 const PortfolioItems = styled.section`
   margin-top: ${({ theme }) => theme.space[5]};
   @media ${({ theme }) => theme.breakpoints.up.md} {
@@ -28,10 +34,10 @@ const WorkPage = () => (
     />
     <Container>
       <Title>Let’s take a look at some previous projects...</Title>
-      <p>
+      <Subtitle>
         I have had the pleasure of working with some great businesses, here is a
         collection of some of those collaborations.
-      </p>
+      </Subtitle>
 
       <PortfolioItems>
         <PortfolioItem

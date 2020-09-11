@@ -34,6 +34,7 @@
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-bodymovin": "^2.0.0",
     "react-codepen-embed": "^1.0.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
@@ -97,6 +98,7 @@
       "plugin:testing-library/recommended"
     ],
     "rules": {
+      "react/jsx-filename-extension": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
       "react/default-props-match-prop-types": "off",
