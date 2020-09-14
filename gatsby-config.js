@@ -49,7 +49,7 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: `#FCFCFC`,
-        theme_color: `#F5DE19`,
+        theme_color: `#CC3363`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },

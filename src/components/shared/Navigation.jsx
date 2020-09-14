@@ -16,6 +16,9 @@ const NavigationItem = styled.li`
     @media (min-width: 360px) {
       padding-right: ${({ theme }) => theme.space[5]};
     }
+    @media (min-width: 400px) {
+      padding-right: ${({ theme }) => theme.space[6]};
+    }
 
     @media ${({ theme }) => theme.breakpoints.up.sm} {
       padding-right: ${({ theme }) => theme.space[7]};
@@ -25,7 +28,6 @@ const NavigationItem = styled.li`
 
 const NavigationLink = styled(Link)`
   text-decoration: none;
-
   &:hover,
   &:focus {
     opacity: 1;

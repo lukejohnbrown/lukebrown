@@ -6,6 +6,7 @@ import { GlobalStyle, Header } from "."
 import globalTheme from "../../theme"
 
 const LayoutWrapper = styled.div`
+  overflow: hidden;
   padding: ${({ theme }) => theme.space[4]} 0;
   @media (min-width: 360px) {
     padding: ${({ theme }) => theme.space[5]} 0;
