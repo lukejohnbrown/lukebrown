@@ -49,7 +49,7 @@ const IndexPage = () => (
   <Layout>
     <Seo title="Freelance Web Designer and Developer" />
     <Container>
-      <Title>Hi there, I&apos;m Luke.</Title>
+      <Title>Hi there, i&apos;m Luke.</Title>
       <Subtitle>
         Over the past 4 years I have been dedicated to serving clients and
         agencies of all shapes and sizes to provide online experiences that are
