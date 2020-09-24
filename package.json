@@ -13,6 +13,7 @@
     "dotenv-webpack": "^1.7.0",
     "gatsby": "^2.19.10",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-canonical-urls": "^2.3.11",
     "gatsby-plugin-fathom": "^1.2.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.40",
