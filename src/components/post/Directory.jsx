@@ -6,6 +6,7 @@ import folderIcon from "../../images/folder-icon.svg"
 const DirectoryText = styled.div`
   font-family: ${({ theme }) => theme.codeFontFamily};
   display: flex;
+  align-items: center;
   font-size: ${({ theme }) => theme.fontSize[-100]};
   font-weight: ${({ theme }) => theme.fontWeight[2]};
   background: #3c3c3c;
